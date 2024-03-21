@@ -126,7 +126,8 @@ const Skills = () => {
                             // border-l border-gray-200 dark:border-gray-700
                             >
                                 {subSkill.data.map((exp, i, exps) => (
-                                    <li key={i} className="relative px-2 py-1 text-xs bg-gray-100 rounded sm:text-base sm:px-4 sm:py-2 dark:bg-gray-800">
+                                    <li key={i} className="relative px-2 py-1 text-xs bg-gray-100 rounded sm:text-base sm:px-4 sm:py-2 dark:bg-gray-800 animate-shimmerOne bg-[length:300%_100%] bg-[linear-gradient(110deg,transparent,45%,grey,55%,transparent)]">
+                                    {/* // <li key={i} className="relative text-xs bg-gray-100 dark:bg-gray-800 inline-flex h-12 animate-shimmerOne items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:300%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"> */}
                                         {exp.title}
                                     </li>
                                 ))}
