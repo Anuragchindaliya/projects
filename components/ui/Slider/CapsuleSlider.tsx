@@ -57,7 +57,7 @@ const CapsuleSlider = () => {
       | TouchEvent
       | PointerEvent
   ) => {
-    controls.start(event);
+    // controls.start(event);
   };
   // const endDrag = (
   //   event:
