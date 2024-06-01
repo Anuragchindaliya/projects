@@ -1,6 +1,7 @@
 import { AnimatedTooltipPreview } from "@/components/ui/animated-tooltip";
 import { Button } from "@/components/ui/button";
 import { HeroScrollDemo } from "@/components/ui/container-scroll-animation";
+import { GlobeDemo } from "@/components/ui/globe-demo";
 import { GoogleGeminiEffectDemo } from "@/components/ui/google-gemini-effect";
 import GridBackgroundDemo from "@/components/ui/gridBg";
 import { HeroParallax } from "@/components/ui/hero-parallax";
@@ -12,6 +13,7 @@ import {
 import { MacbookScroll } from "@/components/ui/macbook-scroll";
 import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import { VortexDemo } from "@/components/ui/vortex";
 import { CalendarIcon } from "lucide-react";
 import Image from "next/image";
 import { BiLogoNodejs, BiLogoTypescript } from "react-icons/bi";
@@ -162,7 +164,11 @@ const products = [
 const Edventure = () => {
   return (
     <>
+
     <HeroParallax products={products} />
+    <GlobeDemo />
+    <VortexDemo />
+
     <div className="overflow-hidden dark:bg-black bg-white w-full">
       <MacbookScroll
         title={
@@ -180,7 +186,10 @@ const Edventure = () => {
         
       />
     </div>
+
+    {/* <BackgroundGradientAnimation> */}
     <StickyScroll content={content} />
+    {/* </BackgroundGradientAnimation> */}
     <GoogleGeminiEffectDemo />
     <AnimatedTooltipPreview />
     <HeroScrollDemo />
@@ -330,6 +339,7 @@ const Edventure = () => {
         </div>
       </section>
     </GridBackgroundDemo>
+
     </>
 
   )
