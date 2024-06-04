@@ -1,8 +1,7 @@
-import { motion, stagger, useAnimate, useCycle } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaUsers, FaUsersSlash } from "react-icons/fa";
-const staggerMenuItems = stagger(0.1, { startDelay: 0.15 });
 const students = [
     {
         id: 1,
@@ -21,40 +20,7 @@ const students = [
         img: "https://images.unsplash.com/photo-1488254491307-10ca8fa174c8?q=80&w=250"
     },
 ]
-function useMenuAnimation(isOpen: boolean) {
-    const [scope, animate] = useAnimate();
 
-    useEffect(() => {
-        //   animate(".arrow", { rotate: isOpen ? 180 : 0 }, { duration: 0.2 });
-
-        animate(
-            "ul",
-            {
-                clipPath: isOpen
-                    ? "inset(0% 0% 0% 0% round 10px)"
-                    : "inset(10% 50% 90% 50% round 10px)",
-            },
-            {
-                type: "spring",
-                bounce: 0,
-                duration: 0.5,
-            }
-        );
-
-        animate(
-            "li",
-            isOpen
-                ? { opacity: 1, scale: 1, filter: "blur(0px)" }
-                : { opacity: 0, scale: 0.3, filter: "blur(20px)" },
-            {
-                duration: 0.2,
-                delay: isOpen ? staggerMenuItems : 0,
-            }
-        );
-    }, [isOpen]);
-
-    return scope;
-}
 const ulVariants = {
     open: {
         transition: { staggerChildren: 0.07, delayChildren: 0.2 }
@@ -80,13 +46,17 @@ const liVariants = {
     }
 };
 
-const join = () => {
-    const scope = useMenuAnimation(true);
-    const [shareScreen, setShareScreen] = useState(false)
-    const [isOpen, toggleOpen] = useCycle(false, true);
+const Join = () => {
+    // const scope = useMenuAnimation(true);
+    // const [shareScreen, setShareScreen] = useState(false)
+    // const [isOpen, toggleOpen] = useCycle(false, true);
+    const [isOpen,setIsOpen]=useState(false)
+    const toggleOpen = ()=>{
+        setIsOpen((b)=>!b)
+    }
 
     return (
-        <div className="w-full  h-[calc(100vh-70px)] overflow-hidden flex " ref={scope}
+        <div className="w-full  h-[calc(100vh-70px)] overflow-hidden flex " 
         >
             <motion.div
                 animate={isOpen ? "visible" : "hidden"}
@@ -178,7 +148,7 @@ const join = () => {
                 {students.map(({ id, img }) => {
                     return <motion.li
                         key={id}
-                        // initial="hidden"
+                        initial="hidden"
                         animate={isOpen ? "visible" : "hidden"}
                         // whileInView="visible"
                         // viewport={{ once: true }}
@@ -212,4 +182,4 @@ const join = () => {
     )
 }
 
-export default join
+export default Join
