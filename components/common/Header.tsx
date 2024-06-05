@@ -34,6 +34,10 @@ const menuList = [
     name: "Edventure",
     link: ROUTES.EDVENTURE,
   },
+  {
+    name: "Join",
+    link: ROUTES.JOIN,
+  },
   // {
   //   name: "Contact",
   //   link: "/contact",
