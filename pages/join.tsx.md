@@ -140,24 +140,17 @@ const Join = () => {
                             animate={isOpen ? "visible" : "hidden"}
                             // whileInView="visible"
                             // viewport={{ once: true }}
-                            transition={{ duration: id * 0.3, type: "spring",delayChildren:5,staggerChildren:5 }}
+                            transition={{ duration: id * 0.3, type: "spring",ease: [0.17, 0.67, 0.83, 0.67] }}
                             variants={{
                                 visible: {
                                     opacity: 1, x: 0, y: 50,
-                                    // animationDuration:"5s",
-                                    // scale:.5,
-                                    // width:150,
-                                    // height:100
                                     scale:1,
                                     margin:5,
-                                    startOffset:id*5,
                                 },
                                 hidden: {
                                     opacity: 1, x: 0, y: 0,
                                     scale:1.2,
                                     margin:30
-                                    // width:250,
-                                    // height:200
                                 }
                             }}
 

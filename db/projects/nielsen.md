@@ -5,14 +5,19 @@ date: "March 12, 2023"
 timeline: "July 2022 - Mar 2023"
 excerpt: "NIQ delivers the most complete and clear understanding of consumer buying behavior through an advanced business intelligence platform with integrated predictive analytics."
 cover_image: "/images/posts/img7.jpg"
-technology: ["React","Redux-thunk","KendoReact"]
+technology: [
+    {title: "React",link: "https://react.dev/"},
+    {title: "Redux-thunk",link: "https://handsonreact.com/docs/redux-thunk"},
+    {title: "KendoReact",link: "https://www.telerik.com/kendo-react-ui/components/" }]
 roles: [
 "Migrated modules (RMS-BO, IQCT, Navigator) from EXTJS to ReactJS, while also managing 6 language localizations using react-i18next and implemented proxy for CORS, and enabled requests to different IPs.",
 "Created server-side editable grids and data-heavy components using redux-thunk workflow.",
 "Integrated a map feature for drawing auditor route paths and displaying store details",
 "Integrated react-big-calendar for scheduling auditor slots"
 ]
-appurl: "https://uat3.navigator.nielseniq.io/fmsnavigator"
+appurl: "https://nielseniq.com/global/en/"
+# appurl: "https://uat3.navigator.nielseniq.io/fmsnavigator"
+year: "2023"
 ---
 
 Lorem [markdownum](http://insunt.org/inpositaque), et sanguine rutilos dixit

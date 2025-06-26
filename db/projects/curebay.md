@@ -5,7 +5,11 @@ date: "Oct 12, 2022"
 timeline: "May 2022 - Oct 2022"
 excerpt: "Introduced a hybrid healthcare and fulfillment model that helps connect patients in underserved markets to healthcare providers and other key ecosystem players digitally."
 cover_image: "/images/posts/img7.jpg"
-technology: ["React", "Redux-saga"]
+technology:
+  [
+    { title: "React", link: "https://react.dev/" },
+    { title: "Redux-saga", link: "https://redux-saga.js.org/" },
+  ]
 roles:
   [
     "Implemented on-scroll loading data using Intersection observer with redux-saga workflow.",
@@ -13,6 +17,7 @@ roles:
     "Created custom hooks to encapsulate reusable logic and functionality, enhancing code modularity and reusability.",
   ]
 appurl: "https://curebay.com/"
+year: "2022"
 ---
 
 Lorem [markdownum](http://insunt.org/inpositaque), et sanguine rutilos dixit

@@ -61,6 +61,10 @@ export const theme = {
       sm: "calc(var(--radius) - 4px)",
     },
     keyframes: {
+      pulseFloor: {
+        '0%, 100%': { transform: 'translateY(0)' },
+        '50%': { transform: 'translateY(-5px)' },
+      },
       "accordion-down": {
         from: { height: 0 },
         to: { height: "var(--radix-accordion-content-height)" },
@@ -108,7 +112,17 @@ export const theme = {
         to: {
           backgroundPosition: "-200% 0",
         },
-      }
+      },
+      text: {
+                '0%, 100%': {
+                   'background-size':'200% 200%',
+                    'background-position': 'left center'
+                },
+                '50%': {
+                   'background-size':'200% 200%',
+                    'background-position': 'right center'
+                }
+            },
     },
     animation: {
       "accordion-down": "accordion-down 0.2s ease-out",
@@ -118,11 +132,12 @@ export const theme = {
       spotlight: "spotlight 2s ease .75s 1 forwards",
       shimmer: "shimmer 2s linear infinite",
       shimmerOne: "shimmer 2s linear",
-
+      floatFloor: 'pulseFloor 5s ease-in-out infinite',
+      text:'text 5s ease infinite',
     },
   },
 };
-export const plugins = [require("tailwindcss-animate"), addVariablesForColors,gridBg];
+export const plugins = [require("tailwindcss-animate"), addVariablesForColors,gridBg,addBgDotThick];
 
 function gridBg({ matchUtilities, theme }) {
   matchUtilities(
@@ -156,4 +171,16 @@ function addVariablesForColors({ addBase, theme }) {
   addBase({
     ":root": newVars,
   });
+}
+function addBgDotThick({ matchUtilities, theme }) {
+  matchUtilities(
+    {
+      "bg-dot-thick": (value) => ({
+        backgroundImage: `url("${svgToDataUri(
+          `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none"><circle fill="${value}" id="pattern-circle" cx="10" cy="10" r="2.5"></circle></svg>`
+        )}")`,
+      }),
+    },
+    { values: flattenColorPalette(theme("backgroundColor")), type: "color" }
+  );
 }

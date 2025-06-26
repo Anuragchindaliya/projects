@@ -2,17 +2,19 @@
 id: 1
 title: "Cytrellis Ellacor"
 date: "March 12, 2023"
-timeline: "March 12, 2023 - ongoing"
-excerpt: "This platform connect physician and patient for skins problems, where patient can apply for appointment. Created crud operation on physician, patient, clinic and survey mananagement"
+timeline: "March, 2023 - June, 2024"
+excerpt: "This platform connect physician, patient and admin for skins problems, where patient can apply for appointment. Created crud operation on physician, patient, clinic and survey mananagement"
 cover_image: "/images/posts/img7.jpg"
 technology:
   [
-    "React",
-    "Typescript",
-    "Redux",
-    "tailwind",
-    "React big calendar",
-    "Google map",
+    { title: "React", link: "https://react.dev/" },
+    { title: "Typescript", link: "https://www.typescriptlang.org/" },
+    { title: "Redux", link: "https://redux.js.org/" },
+    { title: "tailwind", link: "https://tailwindcss.com/" },
+    {
+      title: "React big calendar",
+      link: "https://jquense.github.io/react-big-calendar/examples/index.html?path=/story/about-big-calendar--page",
+    },
   ]
 roles:
   [
@@ -21,7 +23,9 @@ roles:
     "Set up and integrate Shopify API using Apollo GraphQL for seamless data sync between the application and Shopify.",
     "In-housing most used hooks and creating custom hooks to separate the logic from UI.",
   ]
-appurl: "http://44.208.240.120"
+appurl: "https://ellacor.com/"
+# appurl: "http://44.208.240.120"
+year: "2024"
 ---
 
 Lorem [markdownum](http://insunt.org/inpositaque), et sanguine rutilos dixit

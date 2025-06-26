@@ -30,14 +30,14 @@ const menuList = [
     name: "Profile",
     link: ROUTES.PROFILE,
   },
-  {
-    name: "Edventure",
-    link: ROUTES.EDVENTURE,
-  },
-  {
-    name: "Join",
-    link: ROUTES.JOIN,
-  },
+  // {
+  //   name: "Edventure",
+  //   link: ROUTES.EDVENTURE,
+  // },
+  // {
+  //   name: "Join",
+  //   link: ROUTES.JOIN,
+  // },
   // {
   //   name: "Contact",
   //   link: "/contact",

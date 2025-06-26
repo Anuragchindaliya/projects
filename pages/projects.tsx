@@ -2,7 +2,8 @@ import fs from "fs";
 import matter from "gray-matter";
 import Head from "next/head";
 import path from "path";
-import Project from "../components/Works/Project";
+// import Project from "../components/Works/Project";
+import ProjectList from "@/components/Projects/ProjectList";
 import { PostI } from "../types";
 import { sortByDate } from "../utils";
 
@@ -22,8 +23,8 @@ const Projects = ({ posts }: { posts: PostI[] }) => {
                     {/* <Hero /> */}
                     {/* <Testimonial /> */}
                     {/* <Posts posts={posts} /> */}
-                    <Project posts={posts} />
-
+                    {/* <Project posts={posts} /> */}
+                    <ProjectList posts={posts} />
                 </div>
             </main>
         </>

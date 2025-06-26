@@ -1,11 +1,14 @@
 import { motion } from "framer-motion";
 import { Eye, History } from "lucide-react";
 import { PostI } from "../../types";
+import { LinkPreview } from "../ui/link-preview";
+import Paragraph from "../ui/text-animation";
 const ProjectCard = ({ post, index }: { post: PostI; index: number }) => {
     const { frontmatter } = post;
+    console.log({ frontmatter, index })
     return (
         <motion.article
-            className="p-4 bg-white rounded shadow group dark:bg-gray-800"
+            className="p-8 bg-white rounded-xl shadow group dark:bg-gray-800"
             key={post.slug}
             // initial="offscreen"
             whileInView={{
@@ -56,41 +59,45 @@ const ProjectCard = ({ post, index }: { post: PostI; index: number }) => {
                     </div> */}
                 <motion.h2
                     layoutId={post.slug + "heading"}
-                    className="mt-2 text-2xl font-semibold tracking-normal text-brand-primary dark:text-white"
+                    className="mt-2 text-2xl md:text-7xl font-semibold tracking-normal text-brand-primary dark:text-white"
                 >
                     <span className=" bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-blue-800 dark:to-blue-900">
                         {frontmatter.title}
                     </span>
                 </motion.h2>
-                <div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                    <p className="">
-                        {frontmatter.excerpt}
-                    </p>
+                <div className="mt-2 text-sm md:text-4xl text-gray-500 dark:text-gray-400">
+                    <Paragraph paragraph={frontmatter.excerpt}>
+                    </Paragraph>
 
                 </div>
                 {frontmatter?.technology?.length > 0 && <div>
-                    <h3 className="mt-4 mb-2 text-base font-semibold dark:text-gray-300">Technology</h3>
-                    <ul className="flex flex-wrap text-xs sm:text-sm">
+                    <h3 className="mt-4 mb-2 text-base md:text-4xl font-semibold dark:text-gray-300">Technology</h3>
+                    <ul className="flex flex-wrap text-xs sm:text-">
                         {frontmatter?.technology?.map((tech) => {
-                            return <li key={tech.link} className="text-gray-800 dark:text-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full  sm:px-5 p-1 px-2 sm:py-2.5  mr-2 mb-2 dark:bg-gray-700 dark:hover:bg-gray-700/90 dark:focus:ring-gray-700 dark:border-gray-700 capitalize ">{tech.title}</li>
+                            console.log({ tech })
+                            return <li key={tech.link} className="text-gray-800 dark:text-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full  sm:px-5 p-1 px-2 sm:py-2.5  mr-2 mb-2 dark:bg-gray-700 dark:hover:bg-gray-700/90 dark:focus:ring-gray-700 dark:border-gray-700 capitalize md:text-xl">
+                                <LinkPreview url={tech.link} className="font-bold">
+                                    {tech.title}
+                                </LinkPreview>
+                            </li>
                         })}
                     </ul>
                 </div>}
                 <div className="mt-3">
                     <div className="flex justify-between my-2">
-                        <h3 className="text-base font-semibold dark:text-gray-300">Roles</h3>
+                        <h3 className="text-base font-semibold dark:text-gray-300 md:text-4xl">Roles</h3>
 
                     </div>
-                    <ul className="text-sm prose text-gray-500 md:list-disc md:ml-5 dark:text-gray-400">
+                    <ul className="text-sm md:text-3xl space-y-3 leading-relaxed prose text-gray-500 md:list-disc md:ml-5 dark:text-gray-400">
                         {frontmatter?.roles?.map((tech) => {
-                            return <li key={tech} >{tech}</li>
+                            return <li key={tech} ><Paragraph paragraph={tech} /></li>
                         })}
                     </ul>
 
                 </div>
 
                 <div className="flex flex-wrap items-center justify-center my-2 space-x-6">
-                    <a href={frontmatter.appurl} target="_blank" rel="noreferrer" className="flex items-center space-x-1 text-sm text-gray-500 dark:text-gray-400 " >
+                    <a href={frontmatter.appurl} target="_blank" rel="noreferrer" className="flex items-center space-x-1 text-sm sm:text-3xl text-gray-500 dark:text-gray-400 " >
                         <Eye className="" />
                         <u>
                             URL
@@ -111,7 +118,7 @@ const ProjectCard = ({ post, index }: { post: PostI; index: number }) => {
                         </div> */}
                         {/* <span className="text-xs text-gray-300 dark:text-gray-600">•</span> */}
                         <History className="w-4" />
-                        <time className="text-sm"
+                        <time className="text-sm sm:text-3xl"
                             dateTime={frontmatter.timeline}>
                             {frontmatter.timeline}
                         </time>
