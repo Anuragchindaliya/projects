@@ -66,8 +66,8 @@ const ProjectCard = ({ post, index }: { post: PostI; index: number }) => {
                     </span>
                 </motion.h2>
                 <div className="mt-2 text-sm md:text-4xl text-gray-500 dark:text-gray-400">
-                    <Paragraph paragraph={frontmatter.excerpt}>
-                    </Paragraph>
+                    <Paragraph paragraph={frontmatter.excerpt} />
+
 
                 </div>
                 {frontmatter?.technology?.length > 0 && <div>
