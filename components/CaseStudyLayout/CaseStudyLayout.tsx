@@ -32,24 +32,15 @@ export default function CaseStudyLayout({ data }: Props) {
             </motion.div>
 
             {/* PROBLEM */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="space-y-3"
-            >
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-3">
                 <h2 className="text-2xl font-semibold">Problem</h2>
                 <p className="text-muted-foreground">{data.problem}</p>
             </motion.div>
 
-            {/* DEMO PREVIEW */}
+            {/* DEMO */}
             {data.demo && (
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="space-y-4"
-                >
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
                     <h2 className="text-2xl font-semibold">Demo Preview</h2>
-
                     <div
                         className="rounded-xl border p-6 shadow-sm bg-card"
                         dangerouslySetInnerHTML={{ __html: data.demo }}
@@ -59,34 +50,37 @@ export default function CaseStudyLayout({ data }: Props) {
 
             {/* INSTALLATION */}
             {data.installation && (
-                <div>
-                    <h2 className="text-2xl font-semibold mb-4">Installation</h2>
-                    {/* <pre className="rounded-lg bg-muted p-4 text-sm whitespace-pre-wrap">
-                        {data.installation}
-                    </pre> */}
-                    <CodeBlock code={data.installation.code || "Not Found"} language={data.installation.language || "bash"} filename={data.installation.filePath} />
+                <div className="space-y-4">
+                    <h2 className="text-2xl font-semibold">Installation</h2>
+
+                    <CodeBlock
+                        code={data.installation.code || ""}
+                        language={data.installation.language || "bash"}
+                        filename={data.installation.filePath || "install.sh"}
+                    />
                 </div>
             )}
 
             {/* CODE BLOCKS */}
             {data.codeBlocks && data.codeBlocks.length > 0 && (
-                <div className="space-y-10">
+                <div className="space-y-12">
                     {data.codeBlocks.map((block, idx) => (
                         <div key={idx} className="space-y-3">
                             <h2 className="text-xl font-semibold">{block.title}</h2>
 
-                            {"tabs" in block && Array.isArray(block.tabs) && block.tabs.length > 0 && (
+                            {/* Tabbed code blocks */}
+                            {"tabs" in block && Array.isArray(block.tabs) && (
                                 <CodeBlock
-                                    tabs={block.tabs.map((tab: { name: string; code: string; language: string; highlightLines?: number[] }) => ({
-                                        name: tab.name,
-                                        code: tab.code,
-                                        language: tab.language,
-                                        highlightLines: tab.highlightLines || []
+                                    tabs={block.tabs.map((t) => ({
+                                        name: t.name,
+                                        code: t.code,
+                                        language: t.language || "tsx",
+                                        highlightLines: t.highlightLines || [],
                                     }))}
                                 />
                             )}
 
-                            {/* If SINGLE code block */}
+                            {/* Single Block */}
                             {"code" in block && block.code && (
                                 <CodeBlock
                                     filename={block.filePath}
@@ -102,8 +96,8 @@ export default function CaseStudyLayout({ data }: Props) {
 
             {/* USAGE EXAMPLE */}
             {data.usage && (
-                <div>
-                    <h2 className="text-2xl font-semibold mb-4">Usage Example</h2>
+                <div className="space-y-4">
+                    <h2 className="text-2xl font-semibold">Usage Example</h2>
                     <CodeBlock
                         filename="usage-example.tsx"
                         language="tsx"
@@ -132,9 +126,9 @@ export default function CaseStudyLayout({ data }: Props) {
 
             {/* DEV NOTES */}
             {data.devNotes && (
-                <div>
-                    <h2 className="text-2xl font-semibold mb-4">Developer Notes</h2>
-                    <ul className="text-muted-foreground space-y-2">
+                <div className="space-y-4">
+                    <h2 className="text-2xl font-semibold">Developer Notes</h2>
+                    <ul className="space-y-2 text-muted-foreground">
                         {data.devNotes.map((note, i) => (
                             <li key={i}>• {note}</li>
                         ))}
@@ -144,9 +138,9 @@ export default function CaseStudyLayout({ data }: Props) {
 
             {/* IMPACT */}
             {data.impact && (
-                <div>
-                    <h2 className="text-2xl font-semibold mb-4">Impact</h2>
-                    <ul className="text-muted-foreground space-y-2">
+                <div className="space-y-4">
+                    <h2 className="text-2xl font-semibold">Impact</h2>
+                    <ul className="space-y-2 text-muted-foreground">
                         {data.impact.map((point, i) => (
                             <li key={i}>• {point}</li>
                         ))}

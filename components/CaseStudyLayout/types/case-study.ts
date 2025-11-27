@@ -1,5 +1,5 @@
 export interface CodeBlock {
-  title: string;
+  title?: string;
   filePath?: string;
   language?: string;
   code?: string;
