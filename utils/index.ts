@@ -37,6 +37,7 @@ export const ROUTES = {
   PROJECT: "/projects",
   SKILLS: "/skills",
   PROFILE: "/profile",
-  EDVENTURE:"/edventure",
-  JOIN:"/join"
+  EDVENTURE: "/edventure",
+  JOIN: "/join",
+  CASESTUDY: "/case-studies",
 } as const;

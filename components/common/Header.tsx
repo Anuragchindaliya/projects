@@ -30,6 +30,10 @@ const menuList = [
     name: "Profile",
     link: ROUTES.PROFILE,
   },
+  {
+    name: "Case Studies",
+    link: ROUTES.CASESTUDY,
+  },
   // {
   //   name: "Edventure",
   //   link: ROUTES.EDVENTURE,

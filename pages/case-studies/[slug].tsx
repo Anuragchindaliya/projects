@@ -8,7 +8,7 @@ export default function CaseStudyPage() {
 
     if (!slug) return <p className="pt-40 text-center">Loading...</p>;
 
-    const data = caseStudies[slug as string];
+    const data = caseStudies.find((item) => item.slug === slug as string);
 
     if (!data) {
         return (

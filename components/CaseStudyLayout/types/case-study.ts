@@ -7,6 +7,7 @@ export interface CodeBlock {
 }
 
 export interface CaseStudy {
+  slug: string;
   title: string;
   subtitle?: string;
   description: string;
