@@ -4,7 +4,7 @@ import { IconCheck, IconCopy } from "@tabler/icons-react";
 import { Highlight, themes } from "prism-react-renderer";
 import { useState } from "react";
 
-type TabItem = {
+export type TabItem = {
     name: string;
     code: string;
     language?: string;

@@ -2,6 +2,7 @@
 
 import { CodeBlock } from "@/components/ui/CodeBlock";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { CaseStudy } from "./types/case-study";
 
 interface Props {
@@ -150,12 +151,12 @@ export default function CaseStudyLayout({ data }: Props) {
 
             {/* CTA */}
             <div className="text-center pt-10">
-                <a
+                <Link
                     href="/case-studies"
                     className="px-6 py-3 rounded-lg bg-primary text-primary-foreground hover:opacity-80"
                 >
                     View More Case Studies
-                </a>
+                </Link>
             </div>
         </section>
     );

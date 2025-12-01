@@ -4,6 +4,12 @@ export interface CodeBlock {
   language?: string;
   code?: string;
   highlightLines?: number[];
+  tabs?: {
+    name: string;
+    code: string;
+    language?: string;
+    highlightLines?: number[];
+  }[];
 }
 
 export interface CaseStudy {
@@ -27,6 +33,12 @@ export interface CaseStudy {
   devNotes?: string[];
 
   impact?: string[];
+  tabs?: {
+    name: string;
+    code: string;
+    language?: string;
+    highlightLines?: number[];
+  }[];
 
   // You can add more fields later easily
 }
