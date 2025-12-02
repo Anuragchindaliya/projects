@@ -41,16 +41,17 @@ export const MaskContainer = ({
     <motion.div
       ref={containerRef}
       className={cn("h-screen relative ", className)}
-      // animate={{
-      //   backgroundColor: isHovered ? "var(--slate-900)" : "var(--white)",
-      // }}
+    // animate={{
+    //   backgroundColor: isHovered ? "var(--slate-900)" : "var(--white)",
+    // }}
     >
       <motion.div
-        className="w-full h-full  flex items-center justify-center text-6xl absolute bg-black bg-grid-white/[0.2] text-white [mask-image:url(/mask.svg)] [mask-size:40px] [mask-repeat:no-repeat]"
+        className="w-full h-full  flex items-center justify-center text-6xl absolute bg-black bg-grid-white/[0.2] text-white 
+        [mask-size:40px] [mask-repeat:no-repeat]"
+        // [mask-image:url(./mask.svg)]
         animate={{
-          WebkitMaskPosition: `${mousePosition.x - maskSize / 2}px ${
-            mousePosition.y - maskSize / 2
-          }px`,
+          WebkitMaskPosition: `${mousePosition.x - maskSize / 2}px ${mousePosition.y - maskSize / 2
+            }px`,
           WebkitMaskSize: `${maskSize}px`,
         }}
         transition={{ type: "tween", ease: "backOut", duration: 0.1 }}
@@ -76,21 +77,21 @@ export const MaskContainer = ({
   );
 };
 export function SVGMaskEffectDemo() {
-    return (
-      <div className="h-[40rem] w-full flex items-center justify-center  overflow-hidden ">
-        <MaskContainer
-          revealText={
-            <p className="max-w-4xl mx-auto text-slate-800 text-center  text-4xl font-bold">
-              The first rule of MRR Club is you do not talk about MRR Club. The
-              second rule of MRR Club is you DO NOT talk about MRR Club.
-            </p>
-          }
-          className="h-[40rem] w-full  rounded-md dark:bg-blac"
-        >
-          The first rule of <span className="text-red-500">MRR Club</span> is you
-          do not talk about MRR Club. The second rule of MRR Club is you DO NOT
-          talk about <span className="text-red-500">MRR Club</span>.
-        </MaskContainer>
-      </div>
-    );
-  }
+  return (
+    <div className="h-[40rem] w-full flex items-center justify-center  overflow-hidden ">
+      <MaskContainer
+        revealText={
+          <p className="max-w-4xl mx-auto text-slate-800 text-center  text-4xl font-bold">
+            The first rule of MRR Club is you do not talk about MRR Club. The
+            second rule of MRR Club is you DO NOT talk about MRR Club.
+          </p>
+        }
+        className="h-[40rem] w-full  rounded-md dark:bg-blac"
+      >
+        The first rule of <span className="text-red-500">MRR Club</span> is you
+        do not talk about MRR Club. The second rule of MRR Club is you DO NOT
+        talk about <span className="text-red-500">MRR Club</span>.
+      </MaskContainer>
+    </div>
+  );
+}
