@@ -48,7 +48,6 @@ export const MaskContainer = ({
       <motion.div
         className="w-full h-full  flex items-center justify-center text-6xl absolute bg-black bg-grid-white/[0.2] text-white 
         [mask-size:40px] [mask-repeat:no-repeat]"
-        // [mask-image:url(./mask.svg)]
         animate={{
           WebkitMaskPosition: `${mousePosition.x - maskSize / 2}px ${mousePosition.y - maskSize / 2
             }px`,
