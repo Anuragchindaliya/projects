@@ -2,7 +2,7 @@
 id: 1
 title: "Cytrellis Ellacor"
 date: "March 12, 2023"
-timeline: "March, 2023 - June, 2024"
+timeline: "March, 2023 - Sep, 2024"
 excerpt: "This platform connect physician, patient and admin for skins problems, where patient can apply for appointment. Created crud operation on physician, patient, clinic and survey mananagement"
 cover_image: "/images/posts/img7.jpg"
 technology:
