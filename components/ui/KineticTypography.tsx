@@ -28,14 +28,14 @@ export const KineticTypography = () => {
             <motion.div
                 animate={{ opacity: [0.2, 0.5, 0.2], scaleX: [1, 1.2, 1], x: ["-10%", "10%", "-10%"] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-1/3 left-0 w-[120%] h-[2px] bg-gradient-to-r from-transparent via-blue-500/30 to-transparent blur-md z-0 transform -rotate-[5deg]"
+                className="absolute top-1/3 left-0 w-[120%] h-[2px] bg-gradient-to-r from-transparent via-primary/30 to-transparent blur-md z-0 transform -rotate-[5deg]"
             />
 
             <motion.div
                 style={{ x: x1, rotateX: 10, opacity: 0.15 }}
                 animate={{ y: [0, -20, 0] }} // Drone-like floating
                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="text-[12vw] font-black uppercase whitespace-nowrap leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-neutral-500 to-neutral-800 dark:from-neutral-600 dark:to-neutral-900 blur-[1px]"
+                className="text-[12vw] font-black uppercase whitespace-nowrap leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-muted-foreground to-foreground blur-[1px]"
             >
                 Creative Developer
             </motion.div>
@@ -44,7 +44,7 @@ export const KineticTypography = () => {
                 style={{ x: x2, rotateX: 10, opacity: 0.3 }}
                 animate={{ y: [0, 30, 0] }} // Drone-like floating (reverse phase)
                 transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="text-[15vw] font-black uppercase whitespace-nowrap leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500 drop-shadow-2xl z-20 ml-20"
+                className="text-[15vw] font-black uppercase whitespace-nowrap leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-foreground to-muted-foreground drop-shadow-2xl z-20 ml-20"
             >
                 Frontend Engineer
             </motion.div>
@@ -53,7 +53,7 @@ export const KineticTypography = () => {
                 style={{ x: x1, rotateX: 10, opacity: 0.15 }}
                 animate={{ y: [0, -25, 0] }}
                 transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                className="text-[12vw] font-black uppercase whitespace-nowrap leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-neutral-400 to-neutral-800 dark:from-neutral-600 dark:to-neutral-900 blur-[1px]"
+                className="text-[12vw] font-black uppercase whitespace-nowrap leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-muted-foreground to-foreground blur-[1px]"
             >
                 React Expert
             </motion.div>

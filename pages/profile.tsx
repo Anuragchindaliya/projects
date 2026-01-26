@@ -38,7 +38,7 @@ const NameAudioButton = () => {
     <button
       onClick={toggleAudio}
       className={`relative inline-flex items-center justify-center p-2 rounded-full transition-all duration-300 ml-3 align-middle
-      ${isPlaying ? 'bg-orange-500/20 text-orange-500' : 'bg-gray-100 dark:bg-gray-800 text-gray-500 hover:bg-orange-500/10 hover:text-orange-500'}
+      ${isPlaying ? 'bg-primary/20 text-primary' : 'bg-secondary text-muted-foreground hover:bg-primary/10 hover:text-primary'}
       `}
       aria-label="Play name pronunciation"
       style={{ WebkitTextFillColor: 'initial' }} // Override text-transparent from parent h1
@@ -47,7 +47,7 @@ const NameAudioButton = () => {
 
       {/* Ripple Animation when playing */}
       {isPlaying && (
-        <span className="absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-20 animate-ping" />
+        <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-20 animate-ping" />
       )}
     </button>
   );
@@ -65,18 +65,17 @@ const Profile = () => {
             <div className="relative flex flex-col items-center">
               <TextReveal
                 text="Hi, I'm"
-                className="text-2xl md:text-3xl font-medium text-gray-900 dark:text-white mb-2 justify-center"
+                className="text-2xl md:text-3xl font-medium text-muted-foreground mb-2 justify-center"
               />
 
-              <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900  md:text-5xl lg:text-7xl  
+              <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-foreground  md:text-5xl lg:text-7xl  
             bg-gradient-to-r bg-clip-text  text-transparent 
-            from-gray-900 via-gray-500 to-gray-900
-            dark:from-white dark:via-white dark:to-gray-500
+            from-foreground via-muted-foreground to-foreground
             animate-text flex items-center justify-center gap-2">
                 <span className="inline-flex items-center">
                   <TextReveal
                     text="Anurag Chindaliya"
-                    className="text-5xl md:text-8xl font-black text-white tracking-tighter mb-6 justify-center"
+                    className="text-5xl md:text-8xl font-black text-foreground tracking-tighter mb-6 justify-center"
                     duration={0.8}
                     delay={0.2}
                   />
@@ -85,17 +84,17 @@ const Profile = () => {
                 </span>
 
               </h1>
-              <div className="absolute inset-x-20 bottom-0 -z-10 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
-              <div className="absolute inset-x-20 bottom-0 -z-10 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
-              <div className="absolute inset-x-60 bottom-0 -z-10 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
-              <div className="absolute inset-x-60 bottom-0 -z-10 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4" />
+              <div className="absolute inset-x-20 bottom-0 -z-10 bg-gradient-to-r from-transparent via-primary to-transparent h-[2px] w-3/4 blur-sm" />
+              <div className="absolute inset-x-20 bottom-0 -z-10 bg-gradient-to-r from-transparent via-primary to-transparent h-px w-3/4" />
+              <div className="absolute inset-x-60 bottom-0 -z-10 bg-gradient-to-r from-transparent via-accent to-transparent h-[5px] w-1/4 blur-sm" />
+              <div className="absolute inset-x-60 bottom-0 -z-10 bg-gradient-to-r from-transparent via-accent to-transparent h-px w-1/4" />
             </div>
             {/* <SearchInput /> */}
 
             {/* <p className="mb-8 text-xl font-normal text-gray-500 dark:text-gray-400 sm:px-16 lg:text-2xl xl:px-48">
           A software engineer with 3 year of experience in web development with expertise in Frontend and intermdiate in backend .
           <br /> */}
-            <TextGenerateEffect className="mb-8 text-xl font-normal text-gray-500 dark:text-gray-400 sm:px-16 lg:text-2xl xl:px-48" words={`A software engineer ${experienceString} specializing in Frontend technologies and intermediate in backend.`} />
+            <TextGenerateEffect className="mb-8 text-xl font-normal text-muted-foreground sm:px-16 lg:text-2xl xl:px-48" words={`A software engineer ${experienceString} specializing in Frontend technologies and intermediate in backend.`} />
             {/* </p> */}
 
             <div className='flex justify-center space-x-5 md:mb-14'>
@@ -105,7 +104,7 @@ const Profile = () => {
                 </HoverCardTrigger>
                 <HoverCardContent>
                   <div className="flex justify-between space-x-4">
-                    <FaReact className='text-4xl text-gray-800 dark:text-white' />
+                    <FaReact className='text-4xl text-foreground' />
                     <div className="space-y-1 text-left">
                       <h4 className="text-sm font-semibold">@reactjs</h4>
                       <p className="text-sm">
@@ -130,7 +129,7 @@ const Profile = () => {
                 </HoverCardTrigger>
                 <HoverCardContent>
                   <div className="flex justify-between space-x-4">
-                    <BiLogoTypescript className='text-4xl text-gray-800 dark:text-white' />
+                    <BiLogoTypescript className='text-4xl text-foreground' />
                     <div className="space-y-1 text-left">
                       <h4 className="text-sm font-semibold">@typescript</h4>
                       <p className="text-sm">
@@ -155,7 +154,7 @@ const Profile = () => {
                 </HoverCardTrigger>
                 <HoverCardContent>
                   <div className="flex justify-between space-x-4">
-                    <BiLogoNodejs className='text-4xl text-gray-800 dark:text-white' />
+                    <BiLogoNodejs className='text-4xl text-foreground' />
                     <div className="space-y-1 text-left">
                       <h4 className="text-sm font-semibold">@nodejs</h4>
                       <p className="text-sm">
@@ -189,8 +188,8 @@ const Profile = () => {
                   rel="noreferrer"
                   className="group flex items-center mb-5 mr-5 space-x-3 text-base hover:text-gray-800 dark:hover:text-gray-400 lg:mb-0"
                 >
-                  <FaLinkedin className="w-8 h-8 text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-100 group-hover:text-gray-700" />
-                  <span className="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:group-hover:text-gray-100 group-hover:text-gray-700">@anurag-chindaliya
+                  <FaLinkedin className="w-8 h-8 text-muted-foreground group-hover:text-primary transition-colors" />
+                  <span className="text-muted-foreground group-hover:text-primary transition-colors">@anurag-chindaliya
                   </span>
                 </a>
                 <LinkPreview
@@ -200,8 +199,8 @@ const Profile = () => {
 
                   className="group flex items-center mb-5 mr-5 space-x-3 text-base hover:text-gray-800 dark:hover:text-gray-400 lg:mb-0 group"
                 >
-                  <FaGithubSquare className="w-8 h-8 text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-100 group-hover:text-gray-700" />
-                  <span className="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:group-hover:text-gray-100 group-hover:text-gray-700">@Anuragchindaliya
+                  <FaGithubSquare className="w-8 h-8 text-muted-foreground group-hover:text-primary transition-colors" />
+                  <span className="text-muted-foreground group-hover:text-primary transition-colors">@Anuragchindaliya
                   </span>
                 </LinkPreview>
                 <a

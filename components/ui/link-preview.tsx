@@ -55,7 +55,6 @@ export const LinkPreview = ({
     } else {
         src = imageSrc;
     }
-    console.log(src.toString())
 
     const [isOpen, setOpen] = React.useState(false);
 

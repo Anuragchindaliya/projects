@@ -4,51 +4,27 @@ import { FaReact } from 'react-icons/fa';
 import { TextReveal } from "../v2/TextReveal";
 const Hero = () => {
   return (
-    <section className="flex flex-col justify-center dark:bg-gray-900 app-h-screen">
+    <section className="flex flex-col justify-center bg-background app-h-screen">
       <div className="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-12">
-        {/* <a
-          href="#"
-          className="inline-flex items-center justify-between px-1 py-1 pr-4 text-sm text-gray-700 bg-gray-100 rounded-full mb-7 hover:bg-gray-200 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
-          role="alert"
-        >
-          <span className="mr-3 rounded-full bg-primary-600 px-4 py-1.5 text-xs text-white">
-            New
-          </span>{" "}
-          <span className="text-sm font-medium">
-            Flowbite is out! See what's new
-          </span>
-          <svg
-            className="w-5 h-5 ml-2"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </a> */}
         <TextReveal
           text="Hi, I'm"
-          className="text-2xl md:text-3xl text-v2-foreground/60 font-medium mb-2 justify-center"
+          className="text-2xl md:text-3xl text-muted-foreground font-medium mb-2 justify-center"
           duration={0.5}
         />
-        <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+        <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-foreground md:text-5xl lg:text-6xl">
           {/* Hi, I'm */}
           <br />Anurag Chindaliya
         </h1>
         {/* <SearchInput /> */}
 
-        <p className="mb-8 text-xl font-normal text-gray-500 dark:text-gray-400 sm:px-16 lg:text-2xl xl:px-48">
+        <p className="mb-8 text-xl font-normal text-muted-foreground sm:px-16 lg:text-2xl xl:px-48">
           A software engineer with 3 year of experience in web development with expertise in Frontend and intermdiate in backend .
           <br />
         </p>
         <div className='flex justify-center space-x-5 mb-52 md:mb-20'>
-          <FaReact className='text-4xl text-gray-800 dark:text-white' />
-          <BiLogoTypescript className='text-4xl text-gray-800 dark:text-white' />
-          <BiLogoNodejs className='text-4xl text-gray-800 dark:text-white' />
+          <FaReact className='text-4xl text-foreground hover:text-primary transition-colors' />
+          <BiLogoTypescript className='text-4xl text-foreground hover:text-primary transition-colors' />
+          <BiLogoNodejs className='text-4xl text-foreground hover:text-primary transition-colors' />
           {/* <div className="relative w-40 pl-8">
             <DiNodejs className='absolute text-white scale-150 -top-9 text-8xl' />
           </div> */}

@@ -5,7 +5,6 @@ import { LinkPreview } from "../ui/link-preview";
 import Paragraph from "../ui/text-animation";
 const ProjectCard = ({ post, index }: { post: PostI; index: number }) => {
     const { frontmatter } = post;
-    console.log({ frontmatter, index })
     return (
         <motion.article
             className="p-8 bg-white rounded-xl shadow group dark:bg-gray-800"
@@ -74,7 +73,6 @@ const ProjectCard = ({ post, index }: { post: PostI; index: number }) => {
                     <h3 className="mt-4 mb-2 text-base md:text-4xl font-semibold dark:text-gray-300">Technology</h3>
                     <ul className="flex flex-wrap text-xs sm:text-">
                         {frontmatter?.technology?.map((tech) => {
-                            console.log({ tech })
                             return <li key={tech.link} className="text-gray-800 dark:text-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full  sm:px-5 p-1 px-2 sm:py-2.5  mr-2 mb-2 dark:bg-gray-700 dark:hover:bg-gray-700/90 dark:focus:ring-gray-700 dark:border-gray-700 capitalize md:text-xl">
                                 <LinkPreview url={tech.link} className="font-bold">
                                     {tech.title}
