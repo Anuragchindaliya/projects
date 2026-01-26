@@ -4,15 +4,14 @@ import { PostI } from "../../types";
 const ProjectCard = ({ post, index }: { post: PostI; index: number }) => {
     const { frontmatter } = post;
     return (
+
         <motion.article
-            className="p-4 bg-white rounded shadow group dark:bg-gray-800"
+            className="relative p-6 rounded-xl overflow-hidden group hover:-translate-y-2 transition-transform duration-500 dark:bg-gray-800 shadow"
             key={post.slug}
             // initial="offscreen"
             whileInView={{
                 opacity: 1,
                 y: 0,
-                // x: 0,
-                // transition: { staggerChildren: 0.05, staggerDirection: -1 },
             }}
             viewport={{
                 once: true,
@@ -20,109 +19,91 @@ const ProjectCard = ({ post, index }: { post: PostI; index: number }) => {
             }}
             initial={{
                 y: 50,
-                // x: "-100%",
                 opacity: 0,
             }}
             transition={{
-                // type: "spring",
-                // bounce: 0.2,
                 duration: 0.4,
                 delay: index * 0.1,
-                // staggerChildren: 0.05,
-                // staggerDirection: -1,
             }}
-            animate={{}}
-        // variants={cardVariants}
         >
-            {/* <Link href={"./works/" + post.slug}> */}
-            <div className="">
-                {/* <motion.div
-                        //   className="transition-all aspect-square"
-                        className="relative overflow-hidden transition bg-gray-100 rounded-md hover:scale-105 dark:bg-gray-800"
-                        layoutId={post.slug + "hero_img"}
-                        initial={false}
-                        animate={false}
-                    >
-                        <img
-                            src={post.frontmatter.cover_image}
-                            className="object-cover h-full"
-                            alt="post_thumbnail"
-                        />
-                    </motion.div> */}
-                {/* <div>
-                        <span className="inline-block mt-5 text-xs font-medium tracking-wider uppercase text-emerald-700">
-                            Personal Growth
-                        </span>
-                    </div> */}
+            {/* Glassmorphism Background */}
+            <div className="absolute inset-0 bg-white/5 dark:bg-black/20 backdrop-blur-xl border border-white/10 dark:border-white/5 transition-colors duration-500 group-hover:bg-white/10 dark:group-hover:bg-black/10 z-0" />
+
+            {/* Animated Gradient Border/Glow on Hover */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
+                style={{
+                    background: 'radial-gradient(800px circle at var(--mouse-x, center) var(--mouse-y, center), rgba(255,255,255,0.06), transparent 40%)'
+                }}
+            />
+
+            {/* Gradient Blob for "Smooth Gradient Animation" */}
+            <div className="absolute -inset-[100%] bg-gradient-to-r from-transparent via-blue-500/10 to-transparent z-0 opacity-0 group-hover:opacity-100 animate-shimmer pointer-events-none mix-blend-overlay" />
+
+            <div className="relative z-10">
                 <motion.h2
                     layoutId={post.slug + "heading"}
-                    className="mt-2 text-2xl font-semibold tracking-normal text-brand-primary dark:text-white"
+                    className="mt-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
                 >
-                    <span className=" bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-blue-800 dark:to-blue-900">
+                    <span className="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent bg-[length:0%_100%] bg-no-repeat transition-[background-size] duration-500 group-hover:bg-[length:100%_100%]">
+                        {frontmatter.title}
+                    </span>
+                    <span className="absolute inset-0 text-gray-900 dark:text-white group-hover:text-transparent transition-colors duration-500" aria-hidden="true">
                         {frontmatter.title}
                     </span>
                 </motion.h2>
-                <div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                    <p className="">
-                        {frontmatter.excerpt}
-                    </p>
 
+                <div className="mt-3 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <p>{frontmatter.excerpt}</p>
                 </div>
-                {frontmatter?.technology?.length > 0 && <div>
-                    <h3 className="mt-4 mb-2 text-base font-semibold dark:text-gray-300">Technology</h3>
-                    <ul className="flex flex-wrap text-xs sm:text-sm">
-                        {frontmatter?.technology?.map((tech) => {
-                            return <li key={tech.link} className="text-gray-800 dark:text-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full  sm:px-5 p-1 px-2 sm:py-2.5  mr-2 mb-2 dark:bg-gray-700 dark:hover:bg-gray-700/90 dark:focus:ring-gray-700 dark:border-gray-700 capitalize ">{tech.title}</li>
-                        })}
-                    </ul>
-                </div>}
-                <div className="mt-3">
-                    <div className="flex justify-between my-2">
-                        <h3 className="text-base font-semibold dark:text-gray-300">Roles</h3>
 
+                {frontmatter?.technology?.length > 0 && (
+                    <div className="mt-6">
+                        <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">Technology</h3>
+                        <div className="flex flex-wrap gap-2">
+                            {frontmatter?.technology?.map((tech) => (
+                                <span
+                                    key={tech.link}
+                                    className="px-3 py-1 text-xs font-medium text-gray-700 dark:text-gray-200 bg-gray-100/50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-full backdrop-blur-sm"
+                                >
+                                    {tech.title}
+                                </span>
+                            ))}
+                        </div>
                     </div>
-                    <ul className="text-sm prose text-gray-500 md:list-disc md:ml-5 dark:text-gray-400">
-                        {frontmatter?.roles?.map((tech) => {
-                            return <li key={tech} >{tech}</li>
-                        })}
-                    </ul>
+                )}
 
+                <div className="mt-6">
+                    <h3 className="mb-2 text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">Key Roles</h3>
+                    <ul className="text-sm space-y-2 text-gray-600 dark:text-gray-300">
+                        {frontmatter?.roles?.map((role, i) => (
+                            <li key={i} className="flex items-start">
+                                <span className="mr-2 mt-1.5 w-1.5 h-1.5 bg-gray-500 rounded-full shrink-0" />
+                                {role}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-center my-2 space-x-6">
-                    <a href={frontmatter.appurl} target="_blank" rel="noreferrer" className="flex items-center space-x-1 text-sm text-gray-500 dark:text-gray-400 " >
-                        <Eye className="" />
-                        <u>
-                            URL
-                        </u>
+                <div className="flex flex-wrap items-center justify-between mt-8 pt-4 border-t border-gray-200/50 dark:border-white/10">
+                    <a
+                        href={frontmatter.appurl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center gap-2 text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 transition-colors"
+                    >
+                        <Eye className="w-4 h-4" />
+                        <span>View Live</span>
                     </a>
-                    <div className="flex items-center space-x-3 text-gray-500 dark:text-gray-400">
-                        {/* <div className="flex items-center gap-3">
-                            <div className="relative flex-shrink-0 w-5 h-5">
-                                <img
-                                    alt="Erika Oliver"
-                                    src="https://cdn.sanity.io/images/cijrdavx/production/4e20f048a69ac41ab7a6b5f1687f0547379b7469-3648x5472.jpg?w=3840&q=75&fit=clip&auto=format"
-                                    decoding="async"
-                                    className="object-cover w-full h-full rounded-full"
-                                    sizes="30px"
-                                />
-                            </div>
-                            <span className="text-sm">Erika Oliver</span>
-                        </div> */}
-                        {/* <span className="text-xs text-gray-300 dark:text-gray-600">•</span> */}
-                        <History className="w-4" />
-                        <time className="text-sm"
-                            dateTime={frontmatter.timeline}>
-                            {frontmatter.timeline}
-                        </time>
-                        {/* <span>Read more</span> */}
+
+                    <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm">
+                        <History className="w-4 h-4" />
+                        <time dateTime={frontmatter.timeline}>{frontmatter.timeline}</time>
                     </div>
                 </div>
-
             </div>
-            {/* </Link> */}
         </motion.article>
     );
+
 };
 const TechStack = () => {
 

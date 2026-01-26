@@ -12,6 +12,8 @@ import { sortByDate } from "../utils";
 import Profile from "./profile";
 import Skills from "./skills";
 
+import { V2AudioProvider } from "../components/v2/V2AudioProvider";
+
 const AnimatedFloor = () => {
   return (
     <div className=" h-screen w-full flex justify-center items-center top-0 absolute"
@@ -39,7 +41,9 @@ const AnimatedFloor = () => {
 };
 
 // export default AnimatedFloor;
-const Home = ({ posts }: { posts: PostI[] }) => {
+const HomeContent = ({ posts }: { posts: PostI[] }) => {
+  // const { playClick } = useCinematicAudio(true);
+
   return (
     <>
       <Head>
@@ -56,7 +60,7 @@ const Home = ({ posts }: { posts: PostI[] }) => {
           <div className="dark:bg-gray-900">
             <Spotlight className="-top-96 -left-56 md:left-96 md:-top-96 " fill="white" />
           </div>
-          <div className="overflow-hidden h-screen ">
+          <div className="overflow-hidden  ">
             <Profile />
             {/* <AnimatedFloor /> */}
           </div>
@@ -97,6 +101,14 @@ const Home = ({ posts }: { posts: PostI[] }) => {
     </>
   );
 };
+
+const Home = ({ posts }: { posts: PostI[] }) => {
+  return (
+    <V2AudioProvider>
+      <HomeContent posts={posts} />
+    </V2AudioProvider>
+  )
+}
 export async function getStaticProps() {
   // Get files from the posts dir
   const files = fs.readdirSync(path.join("db", "projects"));
