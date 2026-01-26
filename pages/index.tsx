@@ -1,6 +1,7 @@
-import { Spotlight } from "@/components/ui/Spotlight";
 import { BackgroundBeams } from "@/components/ui/background-beams";
+import { KineticTypography } from "@/components/ui/KineticTypography";
 import { LampContainer } from "@/components/ui/lamp";
+import { Spotlight } from "@/components/ui/Spotlight";
 import { motion } from "framer-motion";
 import fs from "fs";
 import matter from "gray-matter";
@@ -61,7 +62,9 @@ const HomeContent = ({ posts }: { posts: PostI[] }) => {
             <Spotlight className="-top-96 -left-56 md:left-96 md:-top-96 " fill="white" />
           </div>
           <div className="overflow-hidden  ">
+            <KineticTypography />
             <Profile />
+
             {/* <AnimatedFloor /> */}
           </div>
           {/* <Hero /> */}
