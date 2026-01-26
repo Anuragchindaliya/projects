@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/hover-card";
 import { LinkPreview } from "@/components/ui/link-preview";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import { TextReveal } from "@/components/v2/TextReveal";
 import { CalendarIcon, Volume2 } from "lucide-react";
 import { useRef, useState } from 'react';
 import { BiLogoNodejs, BiLogoTypescript } from "react-icons/bi";
@@ -54,22 +55,32 @@ const NameAudioButton = () => {
 
 const Profile = () => {
   return (
-    <div className="h-[93.5vh]">
+    <div className="h-[93.5vh] relative overflow-hidden">
       <GridBackgroundDemo>
-        <section className="flex flex-col justify-center  relative ">
+
+        <section className="flex flex-col justify-center relative z-10">
           <div className="absolute inset-0 w-full h-full  [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)] -z-10"></div>
 
           <div className="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-12">
-            <div className="relative">
-              <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900  md:text-5xl lg:text-6xl  
+            <div className="relative flex flex-col items-center">
+              <TextReveal
+                text="Hi, I'm"
+                className="text-2xl md:text-3xl font-medium text-gray-900 dark:text-white mb-2 justify-center"
+              />
+
+              <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900  md:text-5xl lg:text-7xl  
             bg-gradient-to-r bg-clip-text  text-transparent 
             from-gray-900 via-gray-500 to-gray-900
             dark:from-white dark:via-white dark:to-gray-500
-            animate-text">
-                Hi, I'm
-                <br />
+            animate-text flex items-center justify-center gap-2">
                 <span className="inline-flex items-center">
-                  Anurag Chindaliya
+                  <TextReveal
+                    text="Anurag Chindaliya"
+                    className="text-5xl md:text-8xl font-black text-white tracking-tighter mb-6 justify-center"
+                    duration={0.8}
+                    delay={0.2}
+                  />
+                  {/* Anurag Chindaliya */}
                   <NameAudioButton />
                 </span>
 

@@ -1,6 +1,7 @@
 
 import { BiLogoNodejs, BiLogoTypescript } from "react-icons/bi";
 import { FaReact } from 'react-icons/fa';
+import { TextReveal } from "../v2/TextReveal";
 const Hero = () => {
   return (
     <section className="flex flex-col justify-center dark:bg-gray-900 app-h-screen">
@@ -29,8 +30,13 @@ const Hero = () => {
             />
           </svg>
         </a> */}
+        <TextReveal
+          text="Hi, I'm"
+          className="text-2xl md:text-3xl text-v2-foreground/60 font-medium mb-2 justify-center"
+          duration={0.5}
+        />
         <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
-          Hi, I'm
+          {/* Hi, I'm */}
           <br />Anurag Chindaliya
         </h1>
         {/* <SearchInput /> */}
