@@ -68,22 +68,27 @@ const Profile = () => {
                 className="text-2xl md:text-3xl font-medium text-muted-foreground mb-2 justify-center"
               />
 
-              <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-foreground  md:text-5xl lg:text-7xl  
+              {/* <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-foreground  md:text-5xl lg:text-7xl  
             bg-gradient-to-r bg-clip-text  text-transparent 
             from-foreground via-muted-foreground to-foreground
-            animate-text flex items-center justify-center gap-2">
-                <span className="inline-flex items-center">
-                  <TextReveal
+            animate-text flex items-center justify-center gap-2"> */}
+              <div className="flex items-center justify-center">
+                <h1 className="text-6xl md:text-9xl font-bold bg-clip-text text-transparent from-foreground via-muted-foreground to-foreground bg-gradient-to-b dark:from-white dark:via-white/80 dark:to-white/20  mix-blend-difference z-20 relative">
+                  Anurag Chindaliya
+                </h1>
+                <span >
+                  {/* <TextReveal
                     text="Anurag Chindaliya"
-                    className="text-5xl md:text-8xl font-black text-foreground tracking-tighter mb-6 justify-center"
+                    className="text-5xl md:text-8xl font-black tracking-tighter mb-6 justify-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-100 dark:via-white dark:to-white drop-shadow-2xl"
                     duration={0.8}
                     delay={0.2}
-                  />
+                  /> */}
                   {/* Anurag Chindaliya */}
                   <NameAudioButton />
                 </span>
+              </div>
 
-              </h1>
+              {/* </h1> */}
               <div className="absolute inset-x-20 bottom-0 -z-10 bg-gradient-to-r from-transparent via-primary to-transparent h-[2px] w-3/4 blur-sm" />
               <div className="absolute inset-x-20 bottom-0 -z-10 bg-gradient-to-r from-transparent via-primary to-transparent h-px w-3/4" />
               <div className="absolute inset-x-60 bottom-0 -z-10 bg-gradient-to-r from-transparent via-accent to-transparent h-[5px] w-1/4 blur-sm" />

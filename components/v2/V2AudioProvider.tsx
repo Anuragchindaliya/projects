@@ -18,18 +18,26 @@ export function V2AudioProvider({ children }: { children: React.ReactNode }) {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        const storedBg = localStorage.getItem('v2-audio-bg-muted');
-        const storedSfx = localStorage.getItem('v2-audio-sfx-muted');
+        try {
+            const storedBg = localStorage.getItem('v2-audio-bg-muted');
+            const storedSfx = localStorage.getItem('v2-audio-sfx-muted');
 
-        if (storedBg !== null) setIsBgMuted(storedBg === 'true');
-        if (storedSfx !== null) setIsSfxMuted(storedSfx === 'true');
+            if (storedBg !== null) setIsBgMuted(storedBg === 'true');
+            if (storedSfx !== null) setIsSfxMuted(storedSfx === 'true');
+        } catch (e) {
+            console.warn("Failed to access localStorage for V2AudioProvider", e);
+        }
         setMounted(true);
     }, []);
 
     useEffect(() => {
         if (!mounted) return;
-        localStorage.setItem('v2-audio-bg-muted', String(isBgMuted));
-        localStorage.setItem('v2-audio-sfx-muted', String(isSfxMuted));
+        try {
+            localStorage.setItem('v2-audio-bg-muted', String(isBgMuted));
+            localStorage.setItem('v2-audio-sfx-muted', String(isSfxMuted));
+        } catch (e) {
+            console.warn("Failed to save to localStorage in V2AudioProvider", e);
+        }
     }, [isBgMuted, isSfxMuted, mounted]);
 
     const toggleBgMute = () => setIsBgMuted(prev => !prev);

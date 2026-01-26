@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import NoSsr from "./NoSsr";
 
 type PropType = {
@@ -9,6 +9,7 @@ type PropType = {
   className: string;
   children: ReactNode;
   activeClassName: string;
+  onClick?: () => void;
 };
 const NavLink = ({
   exact,
@@ -16,6 +17,7 @@ const NavLink = ({
   className,
   children,
   activeClassName,
+  onClick,
 }: PropType) => {
   const { pathname, asPath } = useRouter();
   const isActive = exact ? pathname === href : asPath === href;
@@ -23,6 +25,7 @@ const NavLink = ({
     <NoSsr>
       <Link href={href}>
         <a
+          onClick={onClick}
           className={isActive ? activeClassName : className}
           {...(isActive && { "aria-current": "page" })}
         >

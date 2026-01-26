@@ -4,6 +4,7 @@ import { useV2Audio } from './V2AudioProvider';
 
 const SOUNDS = {
     hover: '/sounds/hover.mp3',
+    longWoosh: "https://res.cloudinary.com/dmx6fffxi/video/upload/v1769444893/long-woosh.mp3",
     click: 'https://res.cloudinary.com/dmx6fffxi/video/upload/v1769360257/computer-mouse-click-02-383961_iz2ue0.mp3',
     whoosh: 'https://res.cloudinary.com/dmx6fffxi/video/upload/v1769360686/short-woosh-109592_tbsfvz.mp3',
     scifiHum: '/sounds/scifi-hum.mp3',

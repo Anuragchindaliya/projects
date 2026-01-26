@@ -1,3 +1,4 @@
+import { ThemeSwitcher } from "@/components/ui/theme-switcher";
 import { motion } from "framer-motion";
 import { MoreVertical } from "lucide-react";
 import Link from "next/link";
@@ -5,10 +6,10 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import darkLogo from "../../assets/images/anu-tex-black-logo.png";
 import lightLogo from "../../assets/images/anu-tex-white-logo.png";
+import { useSound } from "../../components/audio/SoundContext";
 import { ROUTES } from "../../utils";
 import useBoolean from "../Hooks/useBoolean";
 import NavLink from "./NavLink";
-import ThemeBtn from "./ThemeBtn";
 const menuList = [
   {
     name: "Home",
@@ -73,7 +74,7 @@ const Navbar = () => {
             >
               Log in
             </a> */}
-        <ThemeBtn />
+        <ThemeSwitcher className="static z-auto" />
         {/* <a
               href="#"
               className="mr-2 rounded-lg bg-primary-700 px-4 py-2 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 lg:px-5 lg:py-2.5"
@@ -167,6 +168,8 @@ const Menu = ({
   basePath: string;
 }) => {
   const [isHover, setHover] = useState(false);
+  const { playSFX } = useSound();
+
 
   return (
     <li
@@ -177,6 +180,7 @@ const Menu = ({
     >
       <NavLink
         href={link}
+        // onClick={() => playSFX("click")}
         className={`border-5 relative z-10 block  border-gray-100  py-3  pr-4 pl-3 text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:group-hover:text-white lg:border-0 lg:px-4 lg:py-1 lg:hover:bg-transparent lg:group-hover:text-primary-700 lg:dark:hover:bg-transparent lg:dark:hover:text-white`}
         activeClassName="block lg:px-4 lg:py-1 relative rounded bg-primary-700 py-2 pr-4 pl-3 dark:text-white dark:text-white lg:bg-transparent lg:p-0 lg:text-primary-700 z-10"
       >
@@ -208,12 +212,13 @@ const Menu = ({
 };
 
 const Header = () => {
+  const { playSFX } = useSound();
   return (
     <header>
       <nav className="border-gray-200 bg-white px-4 py-2.5 dark:bg-gray-900 lg:px-6">
         <div className="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto">
           <Link href="/">
-            <a className="flex items-center">
+            <a className="flex items-center" onClick={() => playSFX("click")}>
               <img
                 // src="./images/anu-logo.png"
                 src={darkLogo.src}

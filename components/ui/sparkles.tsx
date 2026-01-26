@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import type { Container, SingleOrMultiple } from "@tsparticles/engine";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 type ParticlesProps = {
@@ -36,21 +36,21 @@ export const SparklesCore = (props: ParticlesProps) => {
       setInit(true);
     });
   }, []);
-  const controls = useAnimation();
+  const [particlesReady, setParticlesReady] = useState(false);
 
   const particlesLoaded = async (container?: Container) => {
     if (container) {
-      controls.start({
-        opacity: 1,
-        transition: {
-          duration: 1,
-        },
-      });
+      setParticlesReady(true);
     }
   };
 
   return (
-    <motion.div animate={controls} className={cn("opacity-0", className)}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: particlesReady ? 1 : 0 }}
+      transition={{ duration: 1 }}
+      className={cn("h-full w-full", className)}
+    >
       {init && (
         <Particles
           id={id || "tsparticles"}

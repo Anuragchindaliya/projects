@@ -7,9 +7,14 @@ import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./dropdown-menu";
 import { useThemeColor } from "./theme-color-provider";
 
-export function ThemeSwitcher() {
+import { cn } from "@/lib/utils";
+
+import { useSound } from "../audio/SoundContext";
+
+export function ThemeSwitcher({ className }: { className?: string }) {
     const { setTheme, theme } = useTheme();
     const { setThemeColor, themeColor } = useThemeColor();
+    const { playSFX } = useSound();
 
     const colors = [
         { name: "Neutral", value: "neutral", class: "bg-neutral-500" },
@@ -23,8 +28,8 @@ export function ThemeSwitcher() {
     ];
 
     return (
-        <div className="fixed bottom-5 right-5 z-[9999]">
-            <DropdownMenu>
+        <div className={cn("fixed bottom-5 right-5 z-[9999]", className)}>
+            <DropdownMenu onOpenChange={(open) => { if (open) playSFX("click") }}>
                 <DropdownMenuTrigger asChild>
                     <Button variant="outline" size="icon" className="w-10 h-10 rounded-full glass-etch">
                         <Palette className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
@@ -34,13 +39,13 @@ export function ThemeSwitcher() {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-48 glass-etch">
                     <DropdownMenuLabel>Appearance</DropdownMenuLabel>
-                    <DropdownMenuItem onClick={() => setTheme("light")} className="cursor-pointer">
+                    <DropdownMenuItem onClick={() => { setTheme("light"); playSFX("whoosh"); }} className="cursor-pointer">
                         <Sun className="mr-2 h-4 w-4" /> Light
                     </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => setTheme("dark")} className="cursor-pointer">
+                    <DropdownMenuItem onClick={() => { setTheme("dark"); playSFX("whoosh"); }} className="cursor-pointer">
                         <Moon className="mr-2 h-4 w-4" /> Dark
                     </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => setTheme("system")} className="cursor-pointer">
+                    <DropdownMenuItem onClick={() => { setTheme("system"); playSFX("whoosh"); }} className="cursor-pointer">
                         <Monitor className="mr-2 h-4 w-4" /> System
                     </DropdownMenuItem>
 
@@ -51,7 +56,7 @@ export function ThemeSwitcher() {
                         {colors.map((color) => (
                             <button
                                 key={color.value}
-                                onClick={() => setThemeColor(color.value as any)}
+                                onClick={() => { setThemeColor(color.value as any); playSFX("whoosh"); }}
                                 className={`
                         w-6 h-6 rounded-full border flex items-center justify-center transition-all
                         ${color.class} 

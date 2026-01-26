@@ -30,16 +30,24 @@ export function ThemeColorProvider({ children }: ThemeColorProviderProps) {
 
     React.useEffect(() => {
         setMounted(true);
-        const savedColor = localStorage.getItem("theme-color") as ThemeColor;
-        if (savedColor) {
-            setThemeColor(savedColor);
+        try {
+            const savedColor = localStorage.getItem("theme-color") as ThemeColor;
+            if (savedColor) {
+                setThemeColor(savedColor);
+            }
+        } catch (e) {
+            console.warn("Failed to read theme-color from localStorage", e);
         }
     }, []);
 
     React.useEffect(() => {
         if (mounted) {
-            localStorage.setItem("theme-color", themeColor);
-            document.body.setAttribute("data-theme-color", themeColor);
+            try {
+                localStorage.setItem("theme-color", themeColor);
+                document.body.setAttribute("data-theme-color", themeColor);
+            } catch (e) {
+                console.warn("Failed to save theme-color to localStorage", e);
+            }
         }
     }, [themeColor, mounted]);
 

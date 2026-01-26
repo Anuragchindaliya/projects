@@ -6,7 +6,7 @@ const ProjectCard = ({ post, index }: { post: PostI; index: number }) => {
     return (
 
         <motion.article
-            className="relative p-6 rounded-xl overflow-hidden group hover:-translate-y-2 transition-transform duration-500 bg-card border border-border shadow-sm"
+            className="relative p-6 rounded-xl overflow-hidden group hover:-translate-y-2 transition-transform duration-500 glass-etch backdrop-blur-4xl    bg-accent group-hover:bg-white/5 group-hover:border-white/20"
             key={post.slug}
             // initial="offscreen"
             whileInView={{
@@ -26,8 +26,8 @@ const ProjectCard = ({ post, index }: { post: PostI; index: number }) => {
                 delay: index * 0.1,
             }}
         >
-            {/* Glassmorphism Background */}
-            <div className="absolute inset-0 glass-etch transition-colors duration-500 group-hover:bg-primary/10 z-0" />
+            {/* Glassmorphism Background - Handled by container class now */}
+            {/* <div className="absolute inset-0 glass-etch transition-colors duration-500 group-hover:bg-primary/10 z-0" /> */}
 
             {/* Animated Gradient Border/Glow on Hover */}
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"
@@ -42,9 +42,9 @@ const ProjectCard = ({ post, index }: { post: PostI; index: number }) => {
             <div className="relative z-10">
                 <motion.h2
                     layoutId={post.slug + "heading"}
-                    className="mt-2 text-2xl font-bold tracking-tight text-foreground"
+                    className="mt-2 text-2xl font-bold tracking-tight text-foreground relative"
                 >
-                    <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent bg-[length:0%_100%] bg-no-repeat transition-[background-size] duration-500 group-hover:bg-[length:100%_100%]">
+                    <span className="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent bg-[length:0%_100%] bg-no-repeat transition-[background-size] duration-500 group-hover:bg-[length:100%_100%]">
                         {frontmatter.title}
                     </span>
                     <span className="absolute inset-0 text-foreground group-hover:text-transparent transition-colors duration-500" aria-hidden="true">
