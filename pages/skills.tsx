@@ -1,181 +1,116 @@
 import { AuroraBackground } from "@/components/ui/aurora-background";
+import { GlassCard } from "@/components/ui/glass-card";
+import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 const library = [
-    {
-        title: "ReactJS",
-    },
-    {
-        title: "NextJS",
-    },
-    {
-        title: "ReactNative",
-    },
-    {
-        title: "Redux (saga,thunk,toolkit)",
-    },
-    {
-        title: "Jest"
-    },
-    {
-        title: "Google Map",
-    },
-    {
-        title: "React big Calendar",
-    },
-    {
-        title: "React Chartjs",
-    },
-    {
-        title: "Tailwind",
-    },
-    {
-        title: "Tailwind plugin preset",
-    },
-    {
-        title: "Bootstrap",
-    },
-    {
-        title: "Ant Design",
-    },
-    {
-        title: "Material UI",
-    },
+    { title: "ReactJS", level: "Expert" },
+    { title: "NextJS", level: "Expert" },
+    { title: "ReactNative", level: "Advanced" },
+    { title: "Redux", level: "Expert" },
+    { title: "Jest", level: "Intermediate" },
+    { title: "Google Map", level: "Advanced" },
+    { title: "React Chartjs", level: "Intermediate" },
+    { title: "Tailwind", level: "Expert" },
+    { title: "Material UI", level: "Advanced" },
+    { title: "Three.js", level: "Intermediate" },
 ];
+
 const language = [
-    {
-        title: "HTML5",
-    },
-    {
-        title: "CSS3",
-    },
-    {
-        title: "JavaScript + NodeJS",
-    },
-    {
-        title: "Typescript",
-    },
-    {
-        title: "SQL",
-    },
-    {
-        title: "C, C++",
-    },
-    {
-        title: "JAVA",
-    },
-]
-const developmentTools = [
-    {
-        title: "VSCode",
-    },
-    {
-        title: "Postman",
-    },
-    {
-        title: "GIT + Github",
-    },
-    {
-        title: "Bitbucket",
-    },
-    {
-        title: "Jira",
-    },
-    {
-        title: "ReactDevTool",
-    },
-    {
-        title: "Husky",
-    },
-]
-const database = [
-    {
-        title: "MySQL"
-    },
-    {
-        title: "MongoDB"
-    },
-]
-const skillArr = [
-    {
-        title: "Language",
-        data: language,
-    },
-    {
-        title: "Framework/Library",
-        data: library,
-    },
-    {
-        title: "Development Tools",
-        data: developmentTools
-    },
-    {
-        title: "Database",
-        data: database
-    }
-]
+    { title: "HTML5", level: "Expert" },
+    { title: "CSS3", level: "Expert" },
+    { title: "JavaScript", level: "Expert" },
+    { title: "TypeScript", level: "Advanced" },
+    { title: "NodeJS", level: "Advanced" },
+    { title: "SQL", level: "Intermediate" },
+    { title: "C++", level: "Basics" },
+];
+
+const tools = [
+    { title: "VSCode", level: "Expert" },
+    { title: "Git/Github", level: "Expert" },
+    { title: "Postman", level: "Advanced" },
+    { title: "Jira", level: "Intermediate" },
+    { title: "Figma", level: "Intermediate" },
+    { title: "Docker", level: "Basics" },
+];
+
+const SkillColumn = ({
+    items,
+    title,
+    className,
+    speed = 15
+}: {
+    items: typeof language,
+    title: string,
+    className?: string,
+    speed?: number
+}) => {
+    return (
+        <div className={cn("flex flex-col", className)}>
+            <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-200 to-neutral-500  mb-4"
+            >
+                {title}
+            </motion.h2>
+            <div className="flex flex-row gap-4 relative">
+                {/* Kinetic Drifting Effect */}
+                <motion.div
+                    animate={{ y: [-5, 5, -5] }} // Reduced drift range for minimalist feel
+                    transition={{
+                        duration: speed,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                    }}
+                    className="flex flex-row flex-wrap gap-4"
+                >
+                    {items.map((skill, idx) => (
+                        <GlassCard key={idx} className="">
+                            <div className="flex flex-row justify-between items-center h-full gap-4">
+                                <h3 className="font-bold text-neutral-700 dark:text-neutral-200">{skill.title}</h3>
+                                {/* <p className="text-xs text-neutral-500 dark:text-neutral-400 font-mono">{skill.level}</p> */}
+                                <div className="h-1.5 w-12 rounded-full bg-neutral-300 dark:bg-neutral-700 overflow-hidden">
+                                    <div className={cn("h-full bg-neutral-500 dark:bg-neutral-400",
+                                        skill.level === "Expert" ? "w-full" :
+                                            skill.level === "Advanced" ? "w-3/4" :
+                                                skill.level === "Intermediate" ? "w-1/2" : "w-1/4"
+                                    )} />
+                                </div>
+                            </div>
+                        </GlassCard>
+                    ))}
+                </motion.div>
+            </div>
+        </div>
+    );
+};
+
 const Skills = () => {
     return (
-        <AuroraBackground>
-            <section className=" dark:bg-gray-900">
-                <div className="max-w-screen-xl px-4 py-8 mx-auto sm:py-16 lg:px-6">
-                    <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white md:text-5xl lg:text-6xl">Skills</h1>
-                    <div className="flex flex-col gap-4">
-                        {skillArr.map((subSkill) => {
-                            return <div key={subSkill.title}>
-                                <h2 className="my-4 text-xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white ">{subSkill.title}</h2>
-                                <ol
-                                    className="relative flex flex-wrap gap-4 dark:text-gray-300 "
-                                // border-l border-gray-200 dark:border-gray-700
-                                >
-                                    {subSkill.data.map((exp, i, exps) => (
-                                        <li key={i} className="relative px-2 py-1 text-xs bg-gray-100 rounded sm:text-base sm:px-4 sm:py-2 dark:bg-gray-800 animate-shimmerOne bg-[length:300%_100%] bg-[linear-gradient(110deg,transparent,45%,grey,55%,transparent)]">
-                                            {/* // <li key={i} className="relative text-xs bg-gray-100 dark:bg-gray-800 inline-flex h-12 animate-shimmerOne items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:300%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"> */}
-                                            {exp.title}
-                                        </li>
-                                    ))}
-                                </ol>
-                            </div>
-                        })}
-                        {/* <div>
-                        <h2 className="my-4 text-xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white ">Language</h2>
-                        <ol
-                            className="relative flex flex-wrap gap-4 dark:text-gray-300 "
-                        // border-l border-gray-200 dark:border-gray-700
-                        >
-                            {language.map((exp, i, exps) => (
-                                <li key={i} className="relative px-2 py-1 text-xs bg-gray-100 rounded sm:text-base sm:px-4 sm:py-2 dark:bg-gray-800">
-                                    {exp.title}
-                                </li>
-                            ))}
-                        </ol>
-                    </div>
-                    <div>
-                        <h2 className="my-4 text-xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white ">Framework/Library</h2>
-                        <ol
-                            className="relative flex flex-wrap gap-4 dark:text-gray-300 "
-                        // border-l border-gray-200 dark:border-gray-700
-                        >
-                            {library.map((exp, i, exps) => (
-                                <li key={i} className="relative px-2 py-1 text-xs bg-gray-100 rounded sm:text-base sm:px-4 sm:py-2 dark:bg-gray-800">
-                                    {exp.title}
-                                </li>
-                            ))}
-                        </ol>
-                    </div>
-                    <div>
-                        <h2 className="my-4 text-xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white ">Development Tools</h2>
-                        <ol
-                            className="relative flex flex-wrap gap-4 dark:text-gray-300 "
-                        // border-l border-gray-200 dark:border-gray-700
-                        >
-                            {developmentTools.map((exp, i, exps) => (
-                                <li key={i} className="relative px-2 py-1 text-xs bg-gray-100 rounded sm:text-base sm:px-4 sm:py-2 dark:bg-gray-800">
-                                    {exp.title}
-                                </li>
-                            ))}
-                        </ol>
-                    </div> */}
-                    </div>
+        <AuroraBackground className="overflow-auto scrollbar-hide">
+            <section className="relative z-10 w-full min-h-screen py-20 px-4 md:px-10 flex flex-col items-center">
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay"></div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="mb-16 text-center"
+                >
+                    <h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white via-white/80 to-white/20 pb-4">
+                        Technical Arsenal
+                    </h1>
+                    <p className="text-neutral-400 max-w-lg mx-auto text-lg">
+                        A curated collection of technologies and tools I use to build digital experiences.
+                    </p>
+                </motion.div>
+
+                <div className=" gap-6 w-full max-w-6xl">
+                    <SkillColumn title="Languages" items={language} speed={8} className="md:mt-0" />
+                    <SkillColumn title="Frameworks" items={library} speed={12} className="md:mt-8" />
+                    <SkillColumn title="Tools" items={tools} speed={10} className="md:mt-8" />
                 </div>
             </section>
         </AuroraBackground>

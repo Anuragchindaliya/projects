@@ -60,27 +60,27 @@ export const useCinematicAudio = (componentEnabled: boolean = true) => {
     const startHum = useCallback(() => {
         if (componentEnabled && humRef.current && !humRef.current.playing()) {
             humRef.current.fade(0, 0.05, 2000);
-            humRef.current.play();
+            // humRef.current.play();
         }
     }, [componentEnabled]);
 
     const playHover = useCallback(() => {
         if (componentEnabled && !isSfxMuted && hoverRef.current) {
             hoverRef.current.stop();
-            hoverRef.current.play();
+            // hoverRef.current.play();
         }
     }, [componentEnabled, isSfxMuted]);
 
     const playClick = useCallback(() => {
         if (componentEnabled && !isSfxMuted && clickRef.current) {
-            clickRef.current.play();
+            // clickRef.current.play();
         }
     }, [componentEnabled, isSfxMuted]);
 
     const playWhoosh = useCallback(() => {
         if (componentEnabled && !isSfxMuted && whooshRef.current) {
             whooshRef.current.stop();
-            whooshRef.current.play();
+            // whooshRef.current.play();
         }
     }, [componentEnabled, isSfxMuted]);
 

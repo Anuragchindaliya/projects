@@ -57,7 +57,10 @@ const AudioController = ({ className }: { className?: string }) => {
     return (
         <div className={cn("fixed bottom-5 left-5 z-[9999] flex items-center gap-2 rounded-full border border-gray-200/20 bg-white/10 p-2 backdrop-blur-md dark:bg-black/40", className)}>
             <button
-                onClick={() => { toggleMute(); playSFX("click") }}
+                onClick={() => {
+                    toggleMute();
+                    playSFX("click")
+                }}
                 className="rounded-full p-2 text-white hover:bg-white/20 transition-colors"
             >
                 {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}

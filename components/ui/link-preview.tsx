@@ -136,22 +136,25 @@ export const LinkPreview = ({
                             >
                                 <Link
                                     href={url}
-                                    className="block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-neutral-200 dark:hover:border-neutral-800"
-                                    style={{ fontSize: 0 }}
-                                    target={"_blank"}
-                                    rel="noopener noreferrer"
                                     passHref
                                 >
-                                    <Image
-                                        src={isStatic ? imageSrc : src}
-                                        width={width}
-                                        height={height}
-                                        quality={quality}
-                                        layout={layout}
-                                        priority={true}
-                                        className="rounded-lg z-20"
-                                        alt="preview image"
-                                    />
+                                    <a
+                                        className="block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-neutral-200 dark:hover:border-neutral-800"
+                                        style={{ fontSize: 0 }}
+                                        target={"_blank"}
+                                        rel="noopener noreferrer"
+                                    >
+                                        <Image
+                                            src={isStatic ? imageSrc : src}
+                                            width={width}
+                                            height={height}
+                                            quality={quality}
+                                            layout={layout}
+                                            priority={true}
+                                            className="rounded-lg z-20"
+                                            alt="preview image"
+                                        />
+                                    </a>
                                 </Link>
                             </motion.div>
                         )}

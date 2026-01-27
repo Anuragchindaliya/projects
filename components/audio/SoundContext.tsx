@@ -5,9 +5,9 @@ import useLocalStorage from "../Hooks/useLocalStorage";
 const SOUNDS = {
     spaceHum: "https://res.cloudinary.com/dmx6fffxi/video/upload/v1769450807/space-hum_l71gyv.mp3",
     click: 'https://res.cloudinary.com/dmx6fffxi/video/upload/v1769360257/computer-mouse-click-02-383961_iz2ue0.mp3',
-    // whoosh: 'https://res.cloudinary.com/dmx6fffxi/video/upload/v1769360686/short-woosh-109592_tbsfvz.mp3',
-    // longWoosh: "https://res.cloudinary.com/dmx6fffxi/video/upload/v1769444893/long-woosh.mp3",
-    static: "https://assets.mixkit.co/sfx/preview/mixkit-static-buzz-1118.mp3",
+    whoosh: 'https://res.cloudinary.com/dmx6fffxi/video/upload/v1769360686/short-woosh-109592_tbsfvz.mp3',
+    longWoosh: "https://res.cloudinary.com/dmx6fffxi/video/upload/v1769444893/long-woosh.mp3",
+    //static: "https://assets.mixkit.co/sfx/preview/mixkit-static-buzz-1118.mp3",
 };
 
 type SoundType = keyof typeof SOUNDS;
@@ -32,8 +32,19 @@ export const SoundProvider = ({ children }: { children: React.ReactNode }) => {
     const ambientRef = useRef<HTMLAudioElement | null>(null);
     const sfxRef = useRef<{ [key in SoundType]?: HTMLAudioElement }>({});
 
+    const isMutedRef = useRef(isMuted);
+    const volumeRef = useRef(volume);
+
     useEffect(() => {
-        // Initialize ambient sound
+        isMutedRef.current = isMuted;
+    }, [isMuted]);
+
+    useEffect(() => {
+        volumeRef.current = volume;
+    }, [volume]);
+
+    // Initialize ambient sound
+    useEffect(() => {
         const audio = new Audio(SOUNDS.spaceHum);
         audio.loop = true;
         audio.volume = isMuted ? 0 : volume * 0.3; // Ambient is quieter
@@ -80,15 +91,15 @@ export const SoundProvider = ({ children }: { children: React.ReactNode }) => {
     }, [setIsMuted]);
 
     const playSFX = React.useCallback((type: SoundType) => {
-        if (isMuted) return;
+        if (isMutedRef.current) return;
         const audio = sfxRef.current[type];
         if (audio) {
             // Clone for overlapping sounds (esp clicks)
             const clone = audio.cloneNode() as HTMLAudioElement;
-            clone.volume = volume;
+            clone.volume = volumeRef.current;
             clone.play().catch(e => console.warn("SFX play error", e));
         }
-    }, [isMuted, volume]);
+    }, []);
 
     const value = React.useMemo(() => ({
         isMuted, toggleMute, playSFX, isPlaying, setIsPlaying, volume, setVolume

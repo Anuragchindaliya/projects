@@ -52,6 +52,16 @@ const Layout = ({ children }: { children: ReactNode }) => {
       </AnimatePresence> */}
       {/* <Footer /> */}
       <BottomNav />
+      {/* <div className="fixed bottom-4 left-0 right-0 z-[50] flex justify-center w-full">
+        <FloatingDock items={
+          [
+            { title: "Home", icon: <Home className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/" },
+            { title: "Project", icon: <Briefcase className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/project" },
+            { title: "Skills", icon: <Code2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/skills" },
+            { title: "User", icon: <User className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/profile" },
+          ]
+        } />
+      </div> */}
       <ProgressBar />
     </div>
   );
