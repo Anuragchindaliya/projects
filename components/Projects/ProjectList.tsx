@@ -21,29 +21,26 @@ type ProjectType = {
     year: string;
 }
 const Project = ({ projectData }: { projectData: ProjectType }) => {
-    return <div>
+    return <div className="group/project">
         <div className="relative z-10 inline-block">
             <LinkPreview url={projectData.appurl} >
                 <motion.h2
-                    // layoutId={post.slug + "heading"}
-                    className="my-2 text-3xl md:text-7xl font-semibold tracking-normal text-brand-primary dark:text-white"
+                    className="my-2 text-3xl md:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-300 to-purple-300"
                 >
-                    <span className=" bg-gradient-to-r from-green-200 to-green-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-blue-800 dark:to-blue-900">
-                        {projectData.title}
-                    </span>
+                    {projectData.title}
                 </motion.h2>
             </LinkPreview>
         </div>
-        <div className="mt-2 text-sm md:text-4xl text-gray-500 dark:text-gray-400 -z-20">
-            <Paragraph paragraph={projectData.excerpt} className="text-xl pt-0 sm:text-5xl pl-0  text-black dark:text-white" />
-
+        <div className="mt-4 text-sm md:text-lg text-neutral-400 leading-relaxed -z-20 max-w-2xl">
+            <Paragraph paragraph={projectData.excerpt} className="text-xl pt-0 sm:text-4xl pl-0 text-neutral-300" />
         </div>
+
         {projectData.technology?.length > 0 && <div>
-            <h3 className="mt-4 mb-2 text-base md:text-4xl font-semibold dark:text-gray-300">Technology</h3>
-            <ul className="flex flex-wrap text-xs">
+            <h3 className="mt-6 mb-3 text-sm font-semibold text-cyan-500 uppercase tracking-widest">Technology</h3>
+            <ul className="flex flex-wrap gap-2 text-sm">
                 {projectData.technology?.map((tech) => {
-                    return <LinkPreview key={tech.link} url={tech.link} className="font-bold text-gray-800 dark:text-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-300  rounded-full  sm:px-5 p-1 px-2 sm:py-2.5  mr-2 mb-2 dark:bg-gray-700 dark:hover:bg-gray-700/90 dark:focus:ring-gray-700 dark:border-gray-700 capitalize md:text-xl">
-                        <li>
+                    return <LinkPreview key={tech.link} url={tech.link} className="">
+                        <li className="px-4 py-1.5 rounded-md bg-white/5 border border-white/10 text-cyan-200/90 backdrop-blur-sm hover:bg-white/10 hover:border-cyan-500/50 hover:text-cyan-100 transition-all duration-300 font-medium whitespace-nowrap">
                             {tech.title}
                         </li>
                     </LinkPreview>
@@ -51,28 +48,29 @@ const Project = ({ projectData }: { projectData: ProjectType }) => {
             </ul>
         </div>}
 
-        <div className="mt-3">
+        <div className="mt-6">
             <div className="flex justify-between my-2">
-                <h3 className="text-base font-semibold dark:text-gray-300 md:text-4xl">Roles</h3>
-
+                <h3 className="text-sm font-semibold text-purple-500 uppercase tracking-widest">Roles</h3>
             </div>
-            <ul className="text-sm md:text-3xl space-y-3 leading-relaxed prose text-gray-500 md:list-disc md:ml-5 dark:text-gray-400 marker:text-black dark:marker:text-white  list-disc ">
-                {projectData.roles?.map((tech) => {
-                    return <li key={tech} ><Paragraph paragraph={tech} className="text-xl sm:text-5xl text-black dark:text-white" /></li>
+            <ul className="space-y-2 relative ">
+                {projectData.roles?.map((role, idx) => {
+                    return <li key={idx} className="flex items-center  text-neutral-400 group/role">
+                        <span className="mt-2 w-2.5 h-1.5 rounded-full bg-purple-500/50 group-hover/role:bg-purple-400 group-hover/role:shadow-[0_0_8px_rgba(168,85,247,0.6)] transition-all" />
+                        {/* <span className="text-lg text-neutral-300">{role}</span> */}
+                        <Paragraph paragraph={role} className="text-xl sm:text-5xl text-black dark:text-white " />
+                    </li>
                 })}
             </ul>
-
         </div>
-        <div className="flex flex-wrap items-center justify-center my-2 space-x-6">
-            <a href={projectData.appurl} target="_blank" rel="noreferrer" className="flex items-center space-x-1 text-sm sm:text-3xl text-gray-500 dark:text-gray-400 " >
-                <Eye className="" />
-                <u>
-                    URL
-                </u>
+
+        <div className="flex flex-wrap items-center mt-8 gap-6 border-t border-white/5 pt-6">
+            <a href={projectData.appurl} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-neutral-400 hover:text-cyan-300 transition-colors group/link" >
+                <Eye className="w-5 h-5 group-hover/link:drop-shadow-[0_0_5px_rgba(34,211,238,0.8)] transition-all" />
+                <span className="text-lg font-medium">Live Preview</span>
             </a>
-            <div className="flex items-center space-x-3 text-gray-500 dark:text-gray-400">
-                <History className="w-4" />
-                <time className="text-sm sm:text-3xl"
+            <div className="flex items-center gap-2 text-neutral-500">
+                <History className="w-4 h-4" />
+                <time className="text-sm font-mono tracking-wider"
                     dateTime={projectData.timeline}>
                     {projectData.timeline}
                 </time>
@@ -88,29 +86,10 @@ const ProjectList = ({ posts }: { posts: PostI[] }) => {
         content: <Project projectData={post.frontmatter} />
     }))
     return (
-        <section className=" dark:bg-gray-900 dark:bg-gradient-to-t dark:from-gray-900 dark:to-gray-900  bg-gradient-to-b from-white t">
-
+        <section className="bg-neutral-950 w-full">
             <div className="w-full">
                 <Timeline data={data} />
             </div>
-            {/* <div className="mx-auto max-w-screen-xl px-4 py-8 lg:px-6 lg:py-16">
-                <div className="mx-auto mb-8 max-w-screen-sm text-center lg:mb-16">
-                    <h2 className="lg:text-9xl mb-4 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-                        Projects
-                    </h2>
-                    <p className="font-light text-gray-500 dark:text-gray-400 sm:text-xl md:text-3xl">
-                        Bringing ideas to life
-                    </p>
-                </div>
-
-                <div className="mt-10 grid gap-10 md:grid-cols-1 lg:gap-10 ">
-                    <NoSsr>
-                        {posts.map((post, i) => (
-                            <ProjectCard post={post} index={i} key={post.slug} />
-                        ))}
-                    </NoSsr>
-                </div>
-            </div> */}
         </section>
     )
 }

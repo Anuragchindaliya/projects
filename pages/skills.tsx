@@ -100,7 +100,7 @@ const Skills = () => {
                     className="mb-16 text-center"
                 >
                     <h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white via-white/80 to-white/20 pb-4">
-                        Technical Arsenal
+                        Technical Skills
                     </h1>
                     <p className="text-neutral-400 max-w-lg mx-auto text-lg">
                         A curated collection of technologies and tools I use to build digital experiences.
