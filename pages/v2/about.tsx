@@ -44,7 +44,7 @@ function AboutPageChild() {
                 <div className="max-w-6xl mx-auto mb-20">
                     <header className="text-center mb-12">
                         <TextReveal
-                            text="Technical Arsenal"
+                            text="Technical Skills"
                             className="text-4xl md:text-5xl font-bold text-white justify-center mb-4"
                         />
                     </header>

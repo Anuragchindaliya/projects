@@ -91,7 +91,7 @@ const Skills = () => {
     return (
         <AuroraBackground className="overflow-auto scrollbar-hide">
             <section className="relative z-10 w-full min-h-screen py-20 px-4 md:px-10 flex flex-col items-center">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay"></div>
+                {/* <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none mix-blend-overlay"></div> */}
 
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
@@ -99,7 +99,7 @@ const Skills = () => {
                     transition={{ duration: 0.8 }}
                     className="mb-16 text-center"
                 >
-                    <h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white via-white/80 to-white/20 pb-4">
+                    <h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-black via-black/80 to-black/20 dark:from-white dark:via-white/80 dark:to-white/20 pb-4">
                         Technical Skills
                     </h1>
                     <p className="text-neutral-400 max-w-lg mx-auto text-lg">

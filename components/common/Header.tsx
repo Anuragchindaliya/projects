@@ -23,14 +23,14 @@ const menuList = [
     name: "Projects",
     link: ROUTES.PROJECT,
   },
-  {
-    name: "Skills",
-    link: ROUTES.SKILLS,
-  },
-  {
-    name: "Profile",
-    link: ROUTES.PROFILE,
-  },
+  // {
+  //   name: "Skills",
+  //   link: ROUTES.SKILLS,
+  // },
+  // {
+  //   name: "Profile",
+  //   link: ROUTES.PROFILE,
+  // },
   {
     name: "Case Studies",
     link: ROUTES.CASESTUDY,
@@ -74,7 +74,7 @@ const Navbar = () => {
             >
               Log in
             </a> */}
-        <ThemeSwitcher className="static z-auto" />
+        <ThemeSwitcher className=" z-50 top-2 fixed" />
         {/* <a
               href="#"
               className="mr-2 rounded-lg bg-primary-700 px-4 py-2 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 lg:px-5 lg:py-2.5"
@@ -135,7 +135,7 @@ const MenuList = ({ basePath }: { basePath: string }) => {
   return (
     <ul
       onClick={(e) => e.stopPropagation()}
-      className="flex flex-col mt-4 font-medium bg-white divide-y shadow-2xl divide-slate-200 dark:divide-slate-700 dark:bg-gray-800 md:shadow-none dark:md:bg-gray-900 lg:mt-0 lg:flex-row lg:divide-y-0"
+      className="flex flex-col mt-4 font-medium  divide-y shadow-2xl divide-slate-200 dark:divide-slate-700  md:shadow-none  lg:mt-0 lg:flex-row lg:divide-y-0"
     >
       {menuList.map((menu, i) => {
         return <Menu menu={menu} basePath={basePath} key={i} />;
@@ -215,7 +215,7 @@ const Header = () => {
   const { playSFX } = useSound();
   return (
     <header>
-      <nav className="border-gray-200 bg-white px-4 py-2.5 dark:bg-gray-900 lg:px-6">
+      <nav className="border-gray-200 bg-white px-4 py-2.5 dark:bg-neutral-950 lg:px-6">
         <div className="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto">
           <Link href="/">
             <a className="flex items-center" onClick={() => playSFX("click")}>

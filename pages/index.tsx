@@ -57,7 +57,7 @@ const HomeContent = ({ posts }: { posts: PostI[] }) => {
         {/* <CapsuleSlider /> */}
         {/* <div className="absolute left-0 top-0 z-0 h-full w-full bg-gradient-to-b from-blue-50 to-transparent dark:from-gray-900 "></div> */}
         <div className="relative z-10">
-          <div className="dark:bg-gray-900">
+          <div className="dark:bg-neutral-950">
             <Spotlight className="-top-96 -left-56 md:left-96 md:-top-96 " fill="white" />
           </div>
           <div className="overflow-hidden  ">

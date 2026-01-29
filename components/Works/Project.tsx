@@ -4,7 +4,7 @@ import ProjectCard from "./ProjectCard";
 
 const Project = ({ posts }: { posts: PostI[] }) => {
   return (
-    <section className=" dark:bg-gray-900 dark:bg-gradient-to-t dark:from-gray-900 dark:to-gray-900  bg-gradient-to-b from-white t">
+    <section className=" dark:bg-neutral-950 dark:bg-gradient-to-t dark:from-neutral-900 dark:to-neutra-960  ">
       <div className="mx-auto max-w-screen-xl px-4 py-8 lg:px-6 lg:py-16">
         <div className="mx-auto mb-8 max-w-screen-sm text-center lg:mb-16">
           <div className="flex items-center justify-center">
