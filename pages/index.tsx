@@ -58,7 +58,7 @@ const HomeContent = ({ posts }: { posts: PostI[] }) => {
         {/* <div className="absolute left-0 top-0 z-0 h-full w-full bg-gradient-to-b from-blue-50 to-transparent dark:from-gray-900 "></div> */}
         <div className="relative z-10">
           <div className="dark:bg-neutral-950">
-            <Spotlight className="-top-96 -left-56 md:left-96 md:-top-96 " fill="white" />
+            <Spotlight className="-top-96 -left-56 md:left-96 md:-top-96 " />
           </div>
           <div className="overflow-hidden  ">
             {/* <KineticTypography /> */}
@@ -78,10 +78,16 @@ const HomeContent = ({ posts }: { posts: PostI[] }) => {
           <Project posts={posts} />
           {/* <AuroraBackground> */}
           <Skills />
-          {/* </AuroraBackground> */}
 
+          {/* Smooth Transition Gradient */}
+          <div className="w-full h-40 bg-gradient-to-b from-transparent to-gray-900 dark:to-gray-900 relative z-20 -mt-20 pointer-events-none" />
         </div>
       </main>
+
+      {/* Horizon Bridge */}
+      <div className="relative w-full overflow-hidden">
+        <div className="w-[120%] h-32 bg-gray-900 left-[-10%] right-[-10%] absolute -mt-32 blur-2xl z-20 opacity-80 pointer-events-none" />
+      </div>
 
       <LampContainer>
 

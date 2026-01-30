@@ -75,7 +75,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                             <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-cyan-100">
                                 {item.title}
                             </h3>
-                            <div className="text-neutral-300 text-xs">
+                            <div className="dark:text-neutral-300 text-xs">
                                 {item.content}
                             </div>
                         </div>
@@ -99,7 +99,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                     />
                 </div>
             </div>
-
+            <div className="w-full h-40 bg-gradient-to-b from-transparent to-gray-900 dark:to-gray-900 relative z-20 -mt-20 pointer-events-none" />
             <LampContainer>
                 <motion.h1
                     initial={{ opacity: 0.5, y: 100 }}

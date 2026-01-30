@@ -55,15 +55,15 @@ const AudioController = ({ className }: { className?: string }) => {
     if (!mounted) return null;
 
     return (
-        <div className={cn("fixed bottom-5 left-5 z-[9999] flex items-center gap-2 rounded-full border border-gray-200/20 bg-white/10 p-2 backdrop-blur-md dark:bg-black/40", className)}>
+        <div className={cn("fixed bottom-24 lg:bottom-5 left-5 z-[9999] flex items-center gap-2 rounded-full border  dark:border-gray-200/20 bg-white/10 p-2 backdrop-blur-md dark:bg-black/40", className)}>
             <button
                 onClick={() => {
                     toggleMute();
                     playSFX("click")
                 }}
-                className="rounded-full p-2 text-white hover:bg-white/20 transition-colors"
+                className="rounded-full p-2  text-white hover:bg-white/20 transition-colors"
             >
-                {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+                {isMuted ? <VolumeX size={18} className="text-black dark:text-white" /> : <Volume2 size={18} className="text-black dark:text-white" />}
             </button>
 
             <div className="hidden sm:block w-24">
@@ -85,7 +85,7 @@ const AudioController = ({ className }: { className?: string }) => {
             {/* Start Button if not started (browser policy) */}
             {!isPlaying && (
                 <button
-                    onClick={() => setIsPlaying(true)} className="text-[10px] text-white underline decoration-dashed">
+                    onClick={() => setIsPlaying(true)} className="text-[10px] dark:text-white underline decoration-dashed">
                     Start Audio
                 </button>
             )}

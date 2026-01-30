@@ -31,8 +31,8 @@ const Project = ({ projectData }: { projectData: ProjectType }) => {
                 </motion.h2>
             </LinkPreview>
         </div>
-        <div className="mt-4 text-sm md:text-lg text-neutral-400 leading-relaxed -z-20 max-w-2xl">
-            <Paragraph paragraph={projectData.excerpt} className="text-xl pt-0 sm:text-4xl pl-0 text-neutral-300" />
+        <div className="mt-4 text-sm md:text-lg text-neutral-900 leading-relaxed -z-20 max-w-2xl">
+            <Paragraph paragraph={projectData.excerpt} className="text-xl pt-0 sm:text-4xl pl-0 text-black dark:text-neutral-300" />
         </div>
 
         {projectData.technology?.length > 0 && <div>
