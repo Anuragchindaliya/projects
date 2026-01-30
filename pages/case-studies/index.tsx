@@ -32,7 +32,7 @@ export default function CaseStudyListPage() {
     const rotate = useTransform(scrollYProgress, [0, 1], [0, 5]);
 
     return (
-        <div ref={containerRef} className="relative w-full min-h-screen overflow-hidden bg-gray-50 dark:bg-black selection:bg-primary selection:text-white">
+        <div ref={containerRef} className="relative w-full min-h-screen overflow-hidden bg-gray-50 dark:bg-neutral-950 selection:bg-primary selection:text-white">
             {/* Zero-Gravity Void Background */}
             <div className="fixed inset-0 w-full h-full pointer-events-none">
                 <SparklesCore
@@ -44,9 +44,11 @@ export default function CaseStudyListPage() {
                     className="w-full h-full"
                     particleColor={accentColor}
                 />
+                {/* radial gradient background */}
+                <div className="w-[25%] h-[50vh] top-[5%] left-[20%] animate-blob absolute inset-0 bg-[radial-gradient(circle,var(--tw-gradient-stops))] dark:from-primary/50 dark:via-neutral-900/20 dark:to-transparent opacity-80 z-0" />
                 {/* Cinematic Fog Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-white/80 dark:from-black dark:via-transparent dark:to-black opacity-80 z-0" />
-                <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50 dark:from-black/50 dark:via-transparent dark:to-black/50 z-0" />
+                {/* <div className="w-[30%] h-screen left-[25%] absolute inset-0 bg-gradient-to-t  from-white/80 via-transparent to-white/80 dark:from-neutral-100 dark:via-transparent dark:to-neutral-900 opacity-80 z-0" /> */}
+                {/* <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-transparent to-white/50 dark:from-neutral-950/50 dark:via-transparent dark:to-neutral-950/50 z-0" /> */}
             </div>
 
             <main className="relative z-10 flex flex-col items-center pt-32 pb-20 px-4 md:px-12 w-full max-w-7xl mx-auto perspective-[1000px]">

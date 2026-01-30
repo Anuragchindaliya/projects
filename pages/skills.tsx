@@ -51,7 +51,7 @@ const SkillColumn = ({
             <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-200 to-neutral-500  mb-4"
+                className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-950 to-neutral-500 dark:from-neutral-200 dark:to-neutral-500  mb-4"
             >
                 {title}
             </motion.h2>

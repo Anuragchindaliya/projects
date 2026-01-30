@@ -35,17 +35,17 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
     return (
         <div
-            className="w-full bg-white dark:bg-neutral-950 font-sans md:px-10 relative overflow-hidden"
+            className="w-full bg-white dark:bg-neutral-950 font-sans  relative overflow-hidden"
             ref={containerRef}
         >
             {/* Ambient Background Lighting */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-[20%] w-[500px] h-[500px] dark:bg-primary/20 bg-primary/20 rounded-full blur-[100px]" />
+                <div className="absolute top-20 left-[10%] w-[500px] h-[400px] dark:bg-primary/20 bg-primary/20 rounded-full blur-[100px]" />
                 <div className="absolute bottom-0 right-[20%] w-[600px] h-[600px] dark:bg-primary/20 bg-primary/20 rounded-full blur-[120px]" />
             </div>
 
             <div className="max-w-7xl mx-auto pt-8 sm:py-20 px-4 md:px-8 lg:px-10 relative z-10">
-                <h2 className="text-4xl md:text-8xl mb-4 text-transparent bg-clip-text bg-gradient-to-b dark:from-white dark:to-primary-500 from-cyan-900 to-primary-500 max-w-4xl font-bold tracking-tight">
+                <h2 className="text-4xl md:text-8xl mb-4 text-transparent bg-clip-text bg-gradient-to-b dark:from-white dark:via-white dark:to-primary-500 from-cyan-900 to-primary-500 max-w-4xl font-bold tracking-tight">
                     Projects
                 </h2>
                 <p className="text-cyan-900/90 dark:text-cyan-100/60 text-sm md:text-xl max-w-xl tracking-wide leading-relaxed">
