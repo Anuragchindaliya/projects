@@ -2,9 +2,8 @@
 
 import caseStudies from "@/components/CaseStudyLayout/data";
 import { CodeBlock } from "@/components/ui/CodeBlock";
-import { SparklesCore } from "@/components/ui/sparkles";
 import { useThemeColor } from "@/components/ui/theme-color-provider";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -28,20 +27,6 @@ export default function CaseStudyPage() {
     const accentColor = colorMap[themeColor] || "#2563eb";
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start start", "end end"]
-    });
-
-    const scaleX = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
-        restDelta: 0.001
-    });
-
-    const headerY = useTransform(scrollYProgress, [0, 0.2], ["0%", "50%"]);
-    const headerOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-
     if (!slug) return null; // Or a loading spinner
 
     const study = caseStudies.find((item) => item.slug === slug as string);
@@ -60,25 +45,12 @@ export default function CaseStudyPage() {
     return (
         <div ref={containerRef} className="relative w-full min-h-screen bg-background selection:bg-primary selection:text-white overflow-x-hidden">
             {/* Scroll Progress Bar */}
-            <motion.div
-                className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent z-50 origin-left"
-                style={{ scaleX }}
-            />
+            {/* Scroll Progress Bar Removed for Performance */}
 
-            {/* Background - Theme Aware */}
-            <div className="fixed inset-0 w-full h-full pointer-events-none">
-                <SparklesCore
-                    id="tsparticlescasestudy"
-                    background="transparent"
-                    minSize={0.6}
-                    maxSize={1.4}
-                    particleDensity={70}
-                    className="w-full h-full"
-                    particleColor={accentColor}
-                />
-                {/* Light/Dark mode fog handling */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black pointer-events-none dark:block hidden" />
-                <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-transparent to-white pointer-events-none dark:hidden block" />
+            {/* Background - Static Gradient for Performance */}
+            <div className="fixed inset-0 w-full h-full pointer-events-none -z-10">
+                <div className="absolute inset-0 bg-gradient-to-b from-blue-50/50 via-transparent to-transparent dark:from-blue-900/20" />
+                <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.2]" />
             </div>
 
             {/* Navigation */}
@@ -88,8 +60,8 @@ export default function CaseStudyPage() {
                         whileHover={{ scale: 1.05, x: -5 }}
                         whileTap={{ scale: 0.95 }}
                         className="px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition-all 
-                        bg-white/80 border border-gray-200 text-gray-700 shadow-sm hover:bg-white
-                        dark:bg-white/5 dark:border-white/10 dark:text-gray-300 dark:hover:bg-white/10 dark:hover:text-white backdrop-blur-md"
+                        bg-white/95 border border-gray-200 text-gray-700 shadow-sm hover:bg-white
+                        dark:bg-zinc-900/95 dark:border-white/10 dark:text-gray-300 dark:hover:bg-zinc-800 dark:hover:text-white"
                     >
                         <ArrowLeft className="w-4 h-4" />
                         Back to Lab
@@ -100,8 +72,7 @@ export default function CaseStudyPage() {
             <main className="relative z-10 pt-32 pb-20 px-4 md:px-8 w-full max-w-7xl mx-auto perspective-[1000px]">
 
                 {/* Hero Headers */}
-                <motion.div
-                    style={{ y: headerY, opacity: headerOpacity }}
+                <div // Changed from motion.div for better performance
                     className="text-center mb-32 space-y-6"
                 >
                     <motion.div
@@ -110,9 +81,9 @@ export default function CaseStudyPage() {
                         transition={{ duration: 1, ease: "easeOut" }}
                         className="inline-block"
                     >
-                        <span className="px-3 py-1 rounded-full border bg-white/50 border-gray-200 text-primary-600 
-                        dark:bg-white/5 dark:border-white/10 dark:text-primary-400 
-                        text-xs tracking-[0.2em] uppercase mb-4 inline-block backdrop-blur-md shadow-sm">
+                        <span className="px-3 py-1 rounded-full border bg-white/80 border-gray-200 text-primary-600 
+                        dark:bg-zinc-900/80 dark:border-white/10 dark:text-primary-400 
+                        text-xs tracking-[0.2em] uppercase mb-4 inline-block shadow-sm">
                             Case Study
                         </span>
                     </motion.div>
@@ -129,7 +100,7 @@ export default function CaseStudyPage() {
                             {study.subtitle}
                         </p>
                     )}
-                </motion.div>
+                </div>
 
                 {/* Content Grid */}
                 <div className="space-y-24">
@@ -322,21 +293,22 @@ const GlassPanel = ({
     noPadding?: boolean
 }) => {
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 50, rotateX: 5 }}
-            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8, delay, ease: "easeOut" }}
-            className={`rounded-3xl overflow-hidden border border-gray-200 dark:border-white/10 bg-white/60 dark:bg-black/20 backdrop-blur-md shadow-sm dark:shadow-none ${className}`}
+        // <motion.div
+        //     initial={{ opacity: 0, y: 50 }}
+        //     whileInView={{ opacity: 1, y: 0 }}
+        // viewport={{ once: true, margin: "-50px" }}
+        // transition={{ duration: 0.8, delay, ease: "easeOut" }}
+        <div
+            className={`rounded-3xl overflow-hidden border border-gray-200 dark:border-white/10 bg-white/95 dark:bg-black/90 shadow-sm dark:shadow-none ${className}`}
         >
             {title && (
-                <div className="px-8 py-6 border-b border-gray-100 dark:border-white/5 bg-white/50 dark:bg-white/5 backdrop-blur-md">
+                <div className="px-8 py-6 border-b border-gray-100 dark:border-white/5 bg-white/50 dark:bg-white/5">
                     <h3 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">{title}</h3>
                 </div>
             )}
             <div className={noPadding ? "" : "p-8 bg-gray-50/50 dark:bg-white/5"}>
                 {children}
             </div>
-        </motion.div>
+        </div>
     );
 };

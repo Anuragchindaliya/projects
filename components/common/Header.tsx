@@ -180,7 +180,7 @@ const Menu = ({
     >
       <NavLink
         href={link}
-        // onClick={() => playSFX("click")}
+        onClick={() => playSFX("click")}
         className={`border-5 relative z-10 block  border-gray-100  py-3  pr-4 pl-3 text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:group-hover:text-white lg:border-0 lg:px-4 lg:py-1 lg:hover:bg-transparent lg:group-hover:text-primary-700 lg:dark:hover:bg-transparent lg:dark:hover:text-white`}
         activeClassName="block lg:px-4 lg:py-1 relative rounded bg-primary-700 py-2 pr-4 pl-3 dark:text-white dark:text-white lg:bg-transparent lg:p-0 lg:text-primary-700 z-10"
       >

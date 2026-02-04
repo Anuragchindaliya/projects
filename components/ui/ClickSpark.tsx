@@ -1,4 +1,6 @@
+import { useTheme } from "next-themes";
 import React, { useCallback, useEffect, useRef } from 'react';
+import { useSound } from '../audio/SoundContext';
 
 interface ClickSparkProps {
     sparkColor?: string;
@@ -28,6 +30,11 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
     extraScale = 1.0,
     children
 }) => {
+    const { playSFX } = useSound();
+    const { resolvedTheme } = useTheme();
+
+    const effectiveSparkColor = resolvedTheme === "dark" ? "#ffffff" : "#000000";
+
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const sparksRef = useRef<Spark[]>([]);
     const startTimeRef = useRef<number | null>(null);
@@ -112,7 +119,7 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
                 const x2 = spark.x + (distance + lineLength) * Math.cos(spark.angle);
                 const y2 = spark.y + (distance + lineLength) * Math.sin(spark.angle);
 
-                ctx.strokeStyle = sparkColor;
+                ctx.strokeStyle = sparkColor === '#fff' ? effectiveSparkColor : sparkColor;
                 ctx.lineWidth = 2;
                 ctx.beginPath();
                 ctx.moveTo(x1, y1);
@@ -130,11 +137,12 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
         return () => {
             cancelAnimationFrame(animationId);
         };
-    }, [sparkColor, sparkSize, sparkRadius, sparkCount, duration, easeFunc, extraScale]);
+    }, [sparkColor, effectiveSparkColor, sparkSize, sparkRadius, sparkCount, duration, easeFunc, extraScale]);
 
     const handleClick = (e: React.MouseEvent<HTMLDivElement>): void => {
         const canvas = canvasRef.current;
         if (!canvas) return;
+        playSFX("click");
         const rect = canvas.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
