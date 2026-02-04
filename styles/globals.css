@@ -10,59 +10,61 @@
 
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
- 
+
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
- 
+
     --primary: 240 5.9% 10%;
     --primary-foreground: 0 0% 98%;
- 
+
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
- 
+
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
- 
+
     --accent: 240 4.8% 95.9%;
     --accent-foreground: 240 5.9% 10%;
- 
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
     --ring: 240 10% 3.9%;
- 
+
     --radius: 0.5rem;
   }
- 
+
   .dark {
     /* "Ultra-modern" Dark (Deep Charcoal/Black) */
     /* --background: 240 10% 3.9%; */
-    --background: 0 0% 3%; /* Near black for that vast premium feel */
+    --background: 0 0% 3%;
+    /* Near black for that vast premium feel */
     --foreground: 0 0% 98%;
- 
-    --card: 240 10% 8.9%; /* Slight charcoal for cards */
+
+    --card: 240 10% 8.9%;
+    /* Slight charcoal for cards */
     --card-foreground: 0 0% 98%;
- 
+
     --popover: 0 0% 3%;
     --popover-foreground: 0 0% 98%;
- 
+
     --primary: 0 0% 98%;
     --primary-foreground: 240 5.9% 10%;
- 
+
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
- 
+
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
- 
+
     --accent: 240 3.7% 15.9%;
     --accent-foreground: 0 0% 98%;
- 
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
- 
+
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
@@ -70,37 +72,41 @@
 
   /* Color Themes (Data Attributes) */
   [data-theme-color="blue"] {
-      --primary: 221.2 83.2% 53.3%;
-      --ring: 221.2 83.2% 53.3%;
+    --primary: 221.2 83.2% 53.3%;
+    --ring: 221.2 83.2% 53.3%;
   }
+
   .dark [data-theme-color="blue"] {
-      --primary: 217.2 91.2% 59.8%;
-      --ring: 217.2 91.2% 59.8%;
+    --primary: 217.2 91.2% 59.8%;
+    --ring: 217.2 91.2% 59.8%;
   }
 
   [data-theme-color="green"] {
-      --primary: 142.1 76.2% 36.3%;
-      --ring: 142.1 76.2% 36.3%;
+    --primary: 142.1 76.2% 36.3%;
+    --ring: 142.1 76.2% 36.3%;
   }
+
   .dark [data-theme-color="green"] {
-      --primary: 142.1 70.6% 45.3%;
-      --ring: 142.1 70.6% 45.3%;
+    --primary: 142.1 70.6% 45.3%;
+    --ring: 142.1 70.6% 45.3%;
   }
 
   [data-theme-color="violet"] {
     --primary: 262.1 83.3% 57.8%;
     --ring: 262.1 83.3% 57.8%;
   }
+
   .dark [data-theme-color="violet"] {
     --primary: 263.4 70% 50.4%;
     --ring: 263.4 70% 50.4%;
   }
-  
+
   [data-theme-color="orange"] {
 
     --primary: 24.6 95% 53.1%;
     --ring: 24.6 95% 53.1%;
   }
+
   .dark [data-theme-color="orange"] {
     --primary: 20.5 90.2% 48.2%;
     --ring: 20.5 90.2% 48.2%;
@@ -110,6 +116,7 @@
     --primary: 220 8.9% 46.1%;
     --ring: 220 8.9% 46.1%;
   }
+
   .dark [data-theme-color="gray"] {
     --primary: 217.9 10.6% 64.9%;
     --ring: 217.9 10.6% 64.9%;
@@ -120,26 +127,30 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
-  
+
   /* Smooth Scrolling */
   html {
-     scroll-behavior: smooth;
+    scroll-behavior: smooth;
   }
 
   /* Custom Scrollbar for "Tech Commercial" feel */
   body::-webkit-scrollbar {
     width: 6px;
   }
+
   body::-webkit-scrollbar-track {
     background: transparent;
   }
+
   body::-webkit-scrollbar-thumb {
     background-color: hsl(var(--muted-foreground) / 0.3);
     border-radius: 20px;
   }
+
   body::-webkit-scrollbar-thumb:hover {
     background-color: hsl(var(--primary) / 0.5);
   }
@@ -153,28 +164,43 @@
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
+
   .dark .glass-etch {
-    border: 1px solid rgba(255, 255, 255, 0.08); /* Sligthly more subtle in dark mode? Or consistent? User said "light border" */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    /* Sligthly more subtle in dark mode? Or consistent? User said "light border" */
   }
 
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
   .no-scrollbar {
-    -ms-overflow-style: none; 
+    -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
   .app-h-screen {
     height: 100dvh;
   }
-  
+
   /* Cinematic utilities */
   .animate-slow-spin {
-      animation: spin 30s linear infinite;
+    animation: spin 30s linear infinite;
   }
+
   .bg-grid-white {
-      background-size: 100px 100px;
-      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    background-size: 100px 100px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  }
+
+  .mask-radial-from-20\% {
+    mask-image: radial-gradient(circle at center, black 20%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle at center, black 20%, transparent 100%);
+  }
+
+  .mask-radial-at-top {
+    mask-position: top;
+    -webkit-mask-position: top;
   }
 }

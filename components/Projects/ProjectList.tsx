@@ -25,7 +25,7 @@ const Project = ({ projectData }: { projectData: ProjectType }) => {
         <div className="relative z-10 inline-block">
             <LinkPreview url={projectData.appurl} >
                 <motion.h2
-                    className="my-2 text-3xl md:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-300 to-purple-300"
+                    className="my-2 text-3xl md:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 dark:from-cyan-300 via-blue-300 to-purple-600 dark:to-purple-300"
                 >
                     {projectData.title}
                 </motion.h2>
@@ -40,7 +40,7 @@ const Project = ({ projectData }: { projectData: ProjectType }) => {
             <ul className="flex flex-wrap gap-2 text-sm">
                 {projectData.technology?.map((tech) => {
                     return <LinkPreview key={tech.link} url={tech.link} className="">
-                        <li className="px-4 py-1.5 rounded-md bg-white/5 border border-white/10 text-cyan-200/90 backdrop-blur-sm hover:bg-white/10 hover:border-cyan-500/50 hover:text-cyan-100 transition-all duration-300 font-medium whitespace-nowrap">
+                        <li className="px-4 py-1.5 rounded-md bg-white/5 border border-cyan-600/10 dark:border-white/10 text-cyan-600/90 dark:text-cyan-200/90 backdrop-blur-sm hover:bg-white/10 hover:border-cyan-500/50 dark:hover:text-cyan-100 transition-all duration-300 font-medium whitespace-nowrap">
                             {tech.title}
                         </li>
                     </LinkPreview>

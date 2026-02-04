@@ -5,19 +5,27 @@ import { ReactNode } from "react";
 import BottomNav from "./common/BottomNav";
 import Header from "./common/Header";
 import ProgressBar from "./common/ProgressBar";
+import ClickSpark from "./ui/ClickSpark";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   // const router = useRouter();
 
   return (
-    <div className="cursor-default">
-      <Head>
-        <title>Anurag chindaliya portfolio</title>
-        <meta name="description" content="Software engineer from faridabad" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Header />
-      {/* <AnimatePresence 
+    <div className="cursor-default min-h-screen">
+      <ClickSpark
+        sparkColor='#fff'
+        sparkSize={10}
+        sparkRadius={15}
+        sparkCount={8}
+        duration={400}
+      >
+        <Head>
+          <title>Anurag chindaliya portfolio</title>
+          <meta name="description" content="Software engineer from faridabad" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <Header />
+        {/* <AnimatePresence 
       // exitBeforeEnter
       mode="wait"
       >
@@ -47,22 +55,25 @@ const Layout = ({ children }: { children: ReactNode }) => {
             },
           }}
         > */}
-      {children}
-      {/* </motion.div>
+
+        {/* Your content here */}
+        {children}
+        {/* </motion.div>
       </AnimatePresence> */}
-      {/* <Footer /> */}
-      <BottomNav />
-      {/* <div className="fixed bottom-4 left-0 right-0 z-[50] flex justify-center w-full">
+        {/* <Footer /> */}
+        <BottomNav />
+        {/* <div className="fixed bottom-4 left-0 right-0 z-[50] flex justify-center w-full">
         <FloatingDock items={
           [
             { title: "Home", icon: <Home className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/" },
             { title: "Project", icon: <Briefcase className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/project" },
             { title: "Skills", icon: <Code2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/skills" },
             { title: "User", icon: <User className="h-full w-full text-neutral-500 dark:text-neutral-300" />, href: "/profile" },
-          ]
-        } />
-      </div> */}
-      <ProgressBar />
+            ]
+            } />
+            </div> */}
+        <ProgressBar />
+      </ClickSpark>
     </div>
   );
 };

@@ -193,14 +193,15 @@ const Profile = () => {
                   rel="noreferrer"
                   className="group flex items-center mb-5 mr-5 space-x-3 text-base hover:text-gray-800 dark:hover:text-gray-400 lg:mb-0"
                 >
+
                   <FaLinkedin className="w-8 h-8 text-muted-foreground group-hover:text-primary transition-colors" />
                   <span className="text-muted-foreground group-hover:text-primary transition-colors">@anurag-chindaliya
                   </span>
                 </a>
                 <LinkPreview
                   url="https://github.com/Anuragchindaliya/"
-                  // target="_blank"
-                  // rel="noreferrer"
+                  target="_blank"
+                  rel="noreferrer"
 
                   className="group flex items-center mb-5 mr-5 space-x-3 text-base hover:text-gray-800 dark:hover:text-gray-400 lg:mb-0 group"
                 >

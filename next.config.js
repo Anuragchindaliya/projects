@@ -5,8 +5,9 @@ const nextConfig = {
   experimental: {
     // scrollRestoration: true,
   },
-  images:{
-    domains:["aceternity.com","images.unsplash.com","unsplash.com","api.microlink.io","assets.aceternity.com"]
+  images: {
+    unoptimized: true,
+    domains: ["aceternity.com", "images.unsplash.com", "unsplash.com", "api.microlink.io", "assets.aceternity.com"]
   }
 };
 

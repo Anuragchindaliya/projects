@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 
+import colors from "tailwindcss/colors";
 import { default as flattenColorPalette } from "tailwindcss/lib/util/flattenColorPalette";
 // const svgToDataUri = require("mini-svg-data-uri");
 import svgToDataUri from "mini-svg-data-uri";
@@ -21,6 +22,7 @@ export const theme = {
   },
   extend: {
     colors: {
+      neutral: colors.neutral,
       "v2-primary": "var(--v2-primary)",
       "v2-secondary": "var(--v2-secondary)",
       "v2-accent": "var(--v2-accent)",
@@ -124,7 +126,21 @@ export const theme = {
       '50%': {
         'background-size': '200% 200%',
         'background-position': 'right center'
-      }
+      },
+      "cell-ripple": {
+        "0%": {
+          opacity: 0.4,
+          transform: "scale(1)",
+        },
+        "50%": {
+          opacity: 1,
+          transform: "scale(1.25)",
+        },
+        "100%": {
+          opacity: 0.4,
+          transform: "scale(1)",
+        },
+      },
     },
     "v2-float": {
       "0%, 100%": { transform: "translateY(0)" },
@@ -147,6 +163,7 @@ export const theme = {
     "text": 'text 5s ease infinite',
     "v2-float": "v2-float 6s ease-in-out infinite",
     "v2-pulse-glow": "v2-pulse-glow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+    "cell-ripple": "cell-ripple var(--duration, 2000ms) ease-out forwards",
   },
 };
 export const plugins = [require("tailwindcss-animate"), addVariablesForColors, gridBg, addBgDotThick];

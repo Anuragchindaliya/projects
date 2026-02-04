@@ -40,12 +40,12 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
         >
             {/* Ambient Background Lighting */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-20 left-[10%] w-[500px] h-[400px] dark:bg-primary/20 bg-primary/20 rounded-full blur-[100px]" />
-                <div className="absolute bottom-0 right-[20%] w-[600px] h-[600px] dark:bg-primary/20 bg-primary/20 rounded-full blur-[120px]" />
+                <div className="animate-blob absolute top-32 left-[10%] w-[500px] h-[400px] dark:bg-primary/20 bg-primary/20 rounded-full blur-[100px]" />
+                {/* <div className="absolute bottom-0 right-[20%] w-[600px] h-[600px] dark:bg-primary/20 bg-primary/20 rounded-full blur-[120px]" /> */}
             </div>
 
             <div className="max-w-7xl mx-auto pt-8 sm:py-20 px-4 md:px-8 lg:px-10 relative z-10">
-                <h2 className="text-4xl md:text-8xl mb-4 text-transparent bg-clip-text bg-gradient-to-b dark:from-white dark:via-white dark:to-primary-500 from-cyan-900 to-primary-500 max-w-4xl font-bold tracking-tight">
+                <h2 className="text-4xl md:text-8xl mb-4 text-transparent bg-clip-text bg-gradient-to-b dark:from-white dark:via-white dark:to-primary-500 from-cyan-900 via-cyan-800 to-primary/50 max-w-4xl font-bold tracking-tight">
                     Projects
                 </h2>
                 <p className="text-cyan-900/90 dark:text-cyan-100/60 text-sm md:text-xl max-w-xl tracking-wide leading-relaxed">
@@ -66,7 +66,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
                             </div>
 
                             {/* Holographic Year/Title */}
-                            <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 to-purple-200 opacity-90">
+                            <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 dark:from-cyan-200 to-purple-600 dark:to-purple-200 opacity-90">
                                 {item.title}
                             </h3>
                         </div>

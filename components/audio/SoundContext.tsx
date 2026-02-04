@@ -15,6 +15,10 @@ type SoundType = keyof typeof SOUNDS;
 interface SoundContextType {
     isMuted: boolean;
     toggleMute: () => void;
+    isMusicEnabled: boolean;
+    toggleMusic: () => void;
+    isSFXEnabled: boolean;
+    toggleSFX: () => void;
     playSFX: (type: SoundType) => void;
     isPlaying: boolean;
     setIsPlaying: (playing: boolean) => void;
@@ -26,6 +30,9 @@ const SoundContext = createContext<SoundContextType | undefined>(undefined);
 
 export const SoundProvider = ({ children }: { children: React.ReactNode }) => {
     const [isMuted, setIsMuted] = useLocalStorage("sound-muted", false);
+    const [isMusicEnabled, setIsMusicEnabled] = useLocalStorage("sound-music-enabled", true);
+    const [isSFXEnabled, setIsSFXEnabled] = useLocalStorage("sound-sfx-enabled", true);
+
     const [isPlaying, setIsPlaying] = useState(false);
     const [volume, setVolume] = useState(0.5); // 0 to 1
 
@@ -33,11 +40,16 @@ export const SoundProvider = ({ children }: { children: React.ReactNode }) => {
     const sfxRef = useRef<{ [key in SoundType]?: HTMLAudioElement }>({});
 
     const isMutedRef = useRef(isMuted);
+    const isSFXEnabledRef = useRef(isSFXEnabled);
     const volumeRef = useRef(volume);
 
     useEffect(() => {
         isMutedRef.current = isMuted;
     }, [isMuted]);
+
+    useEffect(() => {
+        isSFXEnabledRef.current = isSFXEnabled;
+    }, [isSFXEnabled]);
 
     useEffect(() => {
         volumeRef.current = volume;
@@ -65,7 +77,7 @@ export const SoundProvider = ({ children }: { children: React.ReactNode }) => {
 
     useEffect(() => {
         if (ambientRef.current) {
-            if (isPlaying && !isMuted) {
+            if (isPlaying && !isMuted && isMusicEnabled) {
                 // Check if already playing to avoid Promise errors
                 const playPromise = ambientRef.current.play();
                 if (playPromise !== undefined) {
@@ -77,21 +89,29 @@ export const SoundProvider = ({ children }: { children: React.ReactNode }) => {
                 ambientRef.current.pause();
             }
         }
-    }, [isPlaying, isMuted]);
+    }, [isPlaying, isMuted, isMusicEnabled]);
 
     useEffect(() => {
         if (ambientRef.current) {
-            ambientRef.current.volume = isMuted ? 0 : volume * 0.3;
+            ambientRef.current.volume = (isMuted || !isMusicEnabled) ? 0 : volume * 0.3;
         }
-    }, [volume, isMuted]);
+    }, [volume, isMuted, isMusicEnabled]);
 
 
     const toggleMute = React.useCallback(() => {
         setIsMuted((prev) => !prev);
     }, [setIsMuted]);
 
+    const toggleMusic = React.useCallback(() => {
+        setIsMusicEnabled((prev) => !prev);
+    }, [setIsMusicEnabled]);
+
+    const toggleSFX = React.useCallback(() => {
+        setIsSFXEnabled((prev) => !prev);
+    }, [setIsSFXEnabled]);
+
     const playSFX = React.useCallback((type: SoundType) => {
-        if (isMutedRef.current) return;
+        if (isMutedRef.current || !isSFXEnabledRef.current) return;
         const audio = sfxRef.current[type];
         if (audio) {
             // Clone for overlapping sounds (esp clicks)
@@ -102,8 +122,11 @@ export const SoundProvider = ({ children }: { children: React.ReactNode }) => {
     }, []);
 
     const value = React.useMemo(() => ({
-        isMuted, toggleMute, playSFX, isPlaying, setIsPlaying, volume, setVolume
-    }), [isMuted, toggleMute, playSFX, isPlaying, volume]);
+        isMuted, toggleMute,
+        isMusicEnabled, toggleMusic,
+        isSFXEnabled, toggleSFX,
+        playSFX, isPlaying, setIsPlaying, volume, setVolume
+    }), [isMuted, toggleMute, isMusicEnabled, toggleMusic, isSFXEnabled, toggleSFX, playSFX, isPlaying, volume]);
 
     return (
         <SoundContext.Provider value={value}>

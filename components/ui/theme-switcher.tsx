@@ -4,7 +4,15 @@ import { Monitor, Moon, Palette, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./dropdown-menu";
+import {
+    DropdownMenu,
+    DropdownMenuCheckboxItem,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger
+} from "./dropdown-menu";
 import { useThemeColor } from "./theme-color-provider";
 
 import { cn } from "@/lib/utils";
@@ -14,7 +22,7 @@ import { useSound } from "../audio/SoundContext";
 export function ThemeSwitcher({ className }: { className?: string }) {
     const { setTheme, theme } = useTheme();
     const { setThemeColor, themeColor } = useThemeColor();
-    const { playSFX } = useSound();
+    const { playSFX, isMusicEnabled, toggleMusic, isSFXEnabled, toggleSFX } = useSound();
 
     const colors = [
         { name: "Neutral", value: "neutral", class: "bg-neutral-500" },
@@ -38,6 +46,16 @@ export function ThemeSwitcher({ className }: { className?: string }) {
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-48 glass-etch">
+                    <DropdownMenuLabel>Audio</DropdownMenuLabel>
+                    <DropdownMenuCheckboxItem className="pl-7" checked={isMusicEnabled} onCheckedChange={(checked) => { toggleMusic(); if (checked) playSFX("whoosh"); }}>
+                        Background Music
+                    </DropdownMenuCheckboxItem>
+                    <DropdownMenuCheckboxItem className="pl-7" checked={isSFXEnabled} onCheckedChange={(checked) => { toggleSFX(); if (checked) playSFX("click"); }}>
+                        Sound Effects
+                    </DropdownMenuCheckboxItem>
+
+                    <DropdownMenuSeparator />
+
                     <DropdownMenuLabel>Appearance</DropdownMenuLabel>
                     <DropdownMenuItem onClick={() => { setTheme("light"); playSFX("whoosh"); }} className="cursor-pointer">
                         <Sun className="mr-2 h-4 w-4" /> Light

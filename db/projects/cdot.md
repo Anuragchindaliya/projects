@@ -27,6 +27,6 @@ roles:
     "Collaborated with cross-functional teams to align API contracts, improve workflows, and ensure scalable front-end architecture.",
   ]
 
-appurl: "https://dot.gov.in/"
+appurl: "https://eservices.dot.gov.in/"
 year: "2025"
 ---
